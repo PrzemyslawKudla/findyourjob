@@ -8,11 +8,12 @@
     <meta name="Internet Applications Project" content="Internet Applications Project">
     <meta name="author" content="Przemysław Kudła">
 
-    <link rel="stylesheet" href="../findYourJob/css/global-styles.css">
-    <link rel="stylesheet" href="../findYourJob/js/libs/bootstrap/css/bootstrap.min.css">
-    <script src="../findYourJob/js/scripts/jquery-3.2.1.min.js" ></script>
-    <script src="../findYourJob/js/ajax/getData.js"></script>
-    <script src="../findYourJob/js/scripts/global-scripts.js" ></script>
+
+    <link rel="stylesheet" href="css/global-styles.css">
+    <link rel="stylesheet" href="js/libs/bootstrap/css/bootstrap.min.css">
+    <script src="js/scripts/jquery-3.2.1.min.js" ></script>
+    <script src="js/ajax/getData.js"></script>
+    <script src="js/scripts/global-scripts.js" ></script>
 
 </head>
 
@@ -40,7 +41,7 @@
                             Check me out
                         </label>
                     </div>
-                    <button type="button" id="get-data" class="btn btn-primary">Submit</button>
+                    <button type="button" id="get-data" class="btn btn-primary">Send</button>
                 </form>
             </div>
             <div class="col-lg-12" id="ajax-container"></div>

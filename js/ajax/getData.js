@@ -7,12 +7,12 @@ $(document).ready(function () {
 
     btn.addEventListener("click", function () {
         $.ajax({
-            type: "POST",
+            type: "GET",
             cash: false,
-            url: "http://przem94.ayz.pl/projectAI/public/api/user",
-            dataType : 'json',
+            url: "http://findyourjob.dev/public/api/user",
+            dataType : 'text',
             data: {
-                someVar1 : 'LoremIpsum',
+                id : 'LoremIpsum',
                 someVar2 : 210
             },
             success: function(json) {
