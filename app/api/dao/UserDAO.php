@@ -7,7 +7,7 @@
  */
 
 
-class DBConnector
+class UserDAO
 {
 
     public $db;
@@ -16,13 +16,13 @@ class DBConnector
     function __construct()
     {
         try {
-            require_once('JSONUtils.php');
-            require_once 'connection_data.php';
+            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/JSONUtils.php');
+            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/connection_data.php');
             $this->db = new PDO('mysql:host=' . $server_address . ';dbname=' . $db_name . ';charset=utf8', $user_login
                 , $user_password);
             $this->jsonUtils = new JSONUtils();
         } catch (PDOException $e) {
-            print "Błąd połączenia z bazą!: " . $e->getMessage() . "<br/>";
+            print "Error while connecting with database: " . $e->getMessage() . "<br/>";
             die();
         }
     }
@@ -50,7 +50,7 @@ class DBConnector
         $query->execute();
         $rows = array();
         if ($query->rowCount() > 0) {
-            while($result = $query->fetch(PDO::FETCH_ASSOC)){
+            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $result;
             }
             $this->jsonUtils->convert_to_json($rows, 200, 'Success, record downloaded');
@@ -60,20 +60,39 @@ class DBConnector
         }
     }
 
-    public function deleteRecordById($tableName, $id)
+    public function deleteRecordById($id)
     {
-        $query = 'DELETE FROM ' . $tableName . ' WHERE id=' . $id;
-        $query = $this->db->query($query);
-        $rows = array();
+        $query = $this->db->prepare("DELETE FROM user WHERE id_user = :id_user");
+        $query->bindParam(':id_user', $id);
+        $query->execute();
 
-        if ($query != null) {  // napraw błąd - nie działa obsługa błędów
-            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $result;
-            }
-            $this->jsonUtils->convert_to_json($rows, 200, 'Success, record deleted');
+        if ($query->rowCount() > 0) {
+            $this->jsonUtils->convert_to_json(null, 200, "Success, record (id=$id) deleted");
             $query->closeCursor();
         } else {
             $this->jsonUtils->throwError(101, 'Error while deleting record');
+        }
+    }
+
+    public function addUser($login, $password, $name, $surname, $email, $rights, $status)
+    {   $date = date('Y-m-d');
+    $lastID = $this->db->lastInsertId();
+        $query = $this->db->prepare("INSERT INTO user (`id_user`, `login`, `password`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
+                                              VALUES ($lastID,:login, :password, :user_name, :surname, :email, :rights, '$date', :status)");
+        $query->bindParam(':login', $login);
+        $query->bindParam(':password', $password);
+        $query->bindParam(':user_name', $name);
+        $query->bindParam(':surname', $surname);
+        $query->bindParam(':email', $email);
+        $query->bindParam(':rights', $rights);
+        $query->bindParam(':status', $status);
+        $query->execute();
+
+        if ($query->rowCount() > 0) {
+            $this->jsonUtils->convert_to_json(null, 200, "Success, user added to database");
+            $query->closeCursor();
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while adding user');
         }
     }
 

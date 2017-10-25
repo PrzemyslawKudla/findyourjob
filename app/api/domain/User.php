@@ -6,8 +6,7 @@
  * Time: 22:08
  */
 
-require($_SERVER["DOCUMENT_ROOT"].'/app/api/DBConnector.php');
-
+require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/UserDAO.php');
 class User
 {
     private $id_user;
@@ -24,7 +23,7 @@ class User
 
     public function __construct()
     {
-        $this->db = new DBConnector();
+        $this->db = new UserDAO();
     }
 
     public function getIdUser()
@@ -117,9 +116,13 @@ class User
         $this->status = $status;
     }
 
+    public function addUser($login, $password, $name, $surname, $email, $rights, $status) {
+        $this->db->addUser($login, $password, $name, $surname, $email,$rights, $status);
+    }
+
     public function deleteUserById($id)
     {
-        $this->db->deleteRecordById($this->table, $id);
+        $this->db->deleteRecordById($id);
     }
 
     public function getUserDataById($id)

@@ -5,7 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 
 $app = new \Slim\App;
-    require_once('../app/api/userController.php');
+    require_once('../app/api/controller/userController.php');
 $app->run();
 
 

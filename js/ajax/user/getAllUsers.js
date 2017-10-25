@@ -10,7 +10,7 @@ $(document).ready(function () {
             type: "GET",
             cash: false,
             url: "http://findyourjob.dev/public/api/user",
-            dataType : 'text',
+            dataType : 'json',
             data: {
                 id : 'LoremIpsum',
                 someVar2 : 210
