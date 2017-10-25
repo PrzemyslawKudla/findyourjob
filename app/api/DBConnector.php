@@ -6,30 +6,30 @@
  * Time: 17:55
  */
 
-session_start();
 
 class DBConnector
 {
 
     public $db;
     public $jsonUtils;
-    function __construct() {
-        try
-        {   require_once('JSONUtils.php');
+
+    function __construct()
+    {
+        try {
+            require_once('JSONUtils.php');
             require_once 'connection_data.php';
-            $this->db = new PDO('mysql:host='.$server_address.';dbname='.$db_name.';charset=utf8', $user_login
+            $this->db = new PDO('mysql:host=' . $server_address . ';dbname=' . $db_name . ';charset=utf8', $user_login
                 , $user_password);
             $this->jsonUtils = new JSONUtils();
-        }
-        catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             print "Błąd połączenia z bazą!: " . $e->getMessage() . "<br/>";
             die();
         }
     }
 
-    public  function getTable($tableName) {
-        $query = 'SELECT * FROM '.$tableName;
+    public function getTable($tableName)
+    {
+        $query = 'SELECT * FROM ' . $tableName;
         $query = $this->db->query($query);
         $rows = array();
 
@@ -37,33 +37,32 @@ class DBConnector
             while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $result;
             }
-            $this->jsonUtils->convert_to_json($rows,200,'Success, table downloaded');
+            $this->jsonUtils->convert_to_json($rows, 200, 'Success, table downloaded');
             $query->closeCursor();
-        }
-        else {
-            $this->jsonUtils->throwError(101,'Error while getting table');
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while getting table');
         }
     }
 
-    public function getRecordsByID($tableName, $id) {
-        $query = 'SELECT * FROM '.$tableName. ' WHERE id='.$id;
-        $query = $this->db->query($query);
+    public function getRecordsByID($tableName, $id)
+    {
+        $query = $this->db->prepare("SELECT * FROM $tableName WHERE  id_user=$id");
+        $query->execute();
         $rows = array();
-
-        if ($query != null) {
-            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+        if ($query->rowCount() > 0) {
+            while($result = $query->fetch(PDO::FETCH_ASSOC)){
                 $rows[] = $result;
             }
-            $this->jsonUtils->convert_to_json($rows,200,'Success, record downloaded');
+            $this->jsonUtils->convert_to_json($rows, 200, 'Success, record downloaded');
             $query->closeCursor();
-        }
-        else {
-            $this->jsonUtils->throwError(101,'Error while getting record');
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while getting record');
         }
     }
 
-    public function deleteRecordById($tableName, $id) {
-        $query = 'DELETE FROM '.$tableName.' WHERE id='.$id;
+    public function deleteRecordById($tableName, $id)
+    {
+        $query = 'DELETE FROM ' . $tableName . ' WHERE id=' . $id;
         $query = $this->db->query($query);
         $rows = array();
 
@@ -71,27 +70,21 @@ class DBConnector
             while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $result;
             }
-            $this->jsonUtils->convert_to_json($rows,200,'Success, record deleted');
+            $this->jsonUtils->convert_to_json($rows, 200, 'Success, record deleted');
             $query->closeCursor();
-        }
-        else {
-            $this->jsonUtils->throwError(101,'Error while deleting record');
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while deleting record');
         }
     }
 
-    public function doStandardQuery($queryString) {
+    public function doStandardQuery($queryString)
+    {
 
     }
 
-    public function doExec($execQuery) {
-        $calories = 150;
-        $colour = 'red';
-        $sth = $dbh->prepare('SELECT name, colour, calories
-    FROM fruit
-    WHERE calories < :calories AND colour = :colour');
-        $sth->bindParam(':calories', $calories, PDO::PARAM_INT);
-        $sth->bindParam(':colour', $colour, PDO::PARAM_STR, 12);
-        $sth->execute();
+    public function doExec($execQuery)
+    {
+
     }
 }
 

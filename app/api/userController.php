@@ -12,16 +12,16 @@ $app->get('/api/user', function () {
     $user->getAllUsers();
 });
 
-
 $app->delete('/api/user', function (\Slim\Http\Request $request) {
     echo $request->getParsedBody()['id'];
 });
-//$app->get('/api/user/{id}', function (\Slim\Http\Request $request){
-//    require_once('DBConnector.php');
-//    $id = $request->getAttribute('id');
-//    $obj2 = new DBConnector();
-//    $obj2->getRecordsByID('users', $id);
-//});
+
+$app->get('/api/user/{id}', function (\Slim\Http\Request $request){
+    require('domain/User.php');
+    $id = $request->getAttribute('id');
+    $user = new User();
+    $user->getUserDataById($id);
+});
 
 //
 $app->post('/api/user', function (\Slim\Http\Request $request) {

@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="css/global-styles.css">
     <link rel="stylesheet" href="js/libs/bootstrap/css/bootstrap.min.css">
     <script src="js/scripts/jquery-3.2.1.min.js" ></script>
-    <script src="js/ajax/getData.js"></script>
+    <script src="js/ajax/user/getAllUsers.js"></script>
+    <script src="js/ajax/user/getUserById.js"></script>
     <script src="js/scripts/global-scripts.js" ></script>
 
 </head>
@@ -41,7 +42,8 @@
                             Check me out
                         </label>
                     </div>
-                    <button type="button" id="get-data" class="btn btn-primary">Send</button>
+                    <button type="button" id="get-data" class="btn btn-primary">All users</button>
+                    <button type="button" id="get-user-by-id" class="btn btn-primary">User by ID</button>
                 </form>
             </div>
             <div class="col-lg-12" id="ajax-container"></div>
