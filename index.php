@@ -11,13 +11,13 @@
 
     <link rel="stylesheet" href="css/global-styles.css">
     <link rel="stylesheet" href="js/libs/bootstrap/css/bootstrap.min.css">
-    <script src="js/scripts/jquery-3.2.1.min.js" ></script>
+    <script src="js/scripts/jquery-3.2.1.min.js"></script>
     <script src="js/ajax/user/getAllUsers.js"></script>
     <script src="js/ajax/user/getUserById.js"></script>
     <script src="js/ajax/user/deleteUserById.js"></script>
     <script src="js/ajax/user/addUser.js"></script>
     <script src="js/ajax/user/updateUser.js"></script>
-    <script src="js/scripts/global-scripts.js" ></script>
+    <script src="js/scripts/global-scripts.js"></script>
 
 </head>
 
@@ -26,31 +26,20 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 offset-3"><h2>Projekt- Aplikacje internetowe</h2>
-
-
             </div>
             <div class="mx-auto col-lg-6">
-                <form method="post">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Check me out
-                        </label>
-                    </div>
-                    <button type="button" id="get-data" class="btn btn-primary">All users</button>
-                    <button type="button" id="get-user-by-id" class="btn btn-primary">Get user</button>
-                    <button type="button" id="delete-user-by-id" class="btn btn-primary">Delete user</button>
-                    <button type="button" id="add-user" class="btn btn-primary">Add user</button>
-                    <button type="button" id="update-user" class="btn btn-primary">Update</button>
-                </form>
+                <button type="button" id="get-data" class="btn btn-primary">All users</button>
+                <button type="button" id="get-user-by-id" class="btn btn-primary">Get user</button>
+                <button type="button" id="delete-user-by-id" class="btn btn-primary">Delete user</button>
+                <button type="button" id="add-user" class="btn btn-primary">Add user</button>
+                <button type="button" id="update-user" class="btn btn-primary">Update</button>
+                <hr>
+                <button type="button" id="get-all-ads" class="btn btn-primary ads">All ads</button>
+                <button type="button" id="get-ad" class="btn btn-primary ads">Get ad</button>
+                <button type="button" id="delete-ad" class="btn btn-primary ads">Delete ad</button>
+                <button type="button" id="add-ad" class="btn btn-primary ads">Add ad</button>
+                <button type="button" id="update-ad" class="btn btn-primary ads">Update ad</button>
+
             </div>
             <div class="col-lg-12" id="ajax-container"></div>
         </div>
