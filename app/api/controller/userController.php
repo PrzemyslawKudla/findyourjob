@@ -26,7 +26,6 @@ $app->get('/api/user/{id}', function (\Slim\Http\Request $request){
     $user->getUserDataById($id);
 });
 
-//
 $app->post('/api/user', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
     $login = $request->getParsedBody()['login'];

@@ -22,7 +22,7 @@ class UserDAO
                 , $user_password);
             $this->jsonUtils = new JSONUtils();
         } catch (PDOException $e) {
-            print "Error while connecting with database: " . $e->getMessage() . "<br/>";
+            print "Error while connecting with database: " . $e->getMessage();
             die();
         }
     }

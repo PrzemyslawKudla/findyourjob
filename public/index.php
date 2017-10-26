@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 
 $app = new \Slim\App;
     require_once('../app/api/controller/userController.php');
+    require_once('../app/api/controller/advertisementController.php');
 $app->run();
 
 
