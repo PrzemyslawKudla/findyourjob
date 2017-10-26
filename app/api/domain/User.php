@@ -127,11 +127,15 @@ class User
 
     public function getUserDataById($id)
     {
-        echo $this->db->getRecordsByID($this->table, $id);
+        $this->db->getRecordsByID($this->table, $id);
     }
 
     public function getAllUsers()
     {
-        echo $this->db->getTable($this->table);
+        $this->db->getTable($this->table);
+    }
+
+    public function updateUserByID($id, $name, $surname, $email) {
+        $this->db->updateUser($id, $name, $surname, $email);
     }
 }

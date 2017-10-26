@@ -76,9 +76,8 @@ class UserDAO
 
     public function addUser($login, $password, $name, $surname, $email, $rights, $status)
     {   $date = date('Y-m-d');
-    $lastID = $this->db->lastInsertId();
-        $query = $this->db->prepare("INSERT INTO user (`id_user`, `login`, `password`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
-                                              VALUES ($lastID,:login, :password, :user_name, :surname, :email, :rights, '$date', :status)");
+        $query = $this->db->prepare("INSERT INTO user (`login`, `password`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
+                                              VALUES (:login, :password, :user_name, :surname, :email, :rights, '$date', :status)");
         $query->bindParam(':login', $login);
         $query->bindParam(':password', $password);
         $query->bindParam(':user_name', $name);
@@ -86,9 +85,9 @@ class UserDAO
         $query->bindParam(':email', $email);
         $query->bindParam(':rights', $rights);
         $query->bindParam(':status', $status);
-        $query->execute();
+        $result = $query->execute();
 
-        if ($query->rowCount() > 0) {
+        if ($result) {
             $this->jsonUtils->convert_to_json(null, 200, "Success, user added to database");
             $query->closeCursor();
         } else {
@@ -96,14 +95,20 @@ class UserDAO
         }
     }
 
-    public function doStandardQuery($queryString)
-    {
+    public function updateUser($id, $name, $surname, $email) {
+        $query = $this->db->prepare("UPDATE user SET `name` = :user_name, `surname` = :surname, `email` = :email WHERE `id_user` = :id");
+        $query->bindParam(':user_name', $name);
+        $query->bindParam(':surname', $surname);
+        $query->bindParam(':email', $email);
+        $query->bindParam(':id', $id);
+        $result = $query->execute();
 
-    }
-
-    public function doExec($execQuery)
-    {
-
+        if ($result) {
+            $this->jsonUtils->convert_to_json(null, 200, "Success, user updated");
+            $query->closeCursor();
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while updating user');
+        }
     }
 }
 

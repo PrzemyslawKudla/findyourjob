@@ -41,8 +41,15 @@ $app->post('/api/user', function (\Slim\Http\Request $request) {
     $user->addUser($login,$password,$name,$surname,$email,$rights,$status);
 });
 
-//$app->put('/api/user/', function (\Slim\Http\Request $request){
-//    require_once('UserDAO.php//    $name = $request->getParsedBody()['name'];
-//    echo "test put ".$name;
-//});
+$app->put('/api/user', function (\Slim\Http\Request $request){
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
+    $name = $request->getParsedBody()['name'];
+    $surname = $request->getParsedBody()['surname'];
+    $email = $request->getParsedBody()['email'];
+    $id = $request->getParsedBody()['id'];
+
+    $user = new User();
+    $user->updateUserByID($id, $name, $surname, $email);
+
+});
 

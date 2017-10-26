@@ -16,6 +16,7 @@
     <script src="js/ajax/user/getUserById.js"></script>
     <script src="js/ajax/user/deleteUserById.js"></script>
     <script src="js/ajax/user/addUser.js"></script>
+    <script src="js/ajax/user/updateUser.js"></script>
     <script src="js/scripts/global-scripts.js" ></script>
 
 </head>
@@ -24,7 +25,7 @@
 <div class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"><h2>Projekt- Aplikacje internetowe</h2>
+            <div class="col-lg-12 offset-3"><h2>Projekt- Aplikacje internetowe</h2>
 
 
             </div>
@@ -45,9 +46,10 @@
                         </label>
                     </div>
                     <button type="button" id="get-data" class="btn btn-primary">All users</button>
-                    <button type="button" id="get-user-by-id" class="btn btn-primary">User by ID</button>
-                    <button type="button" id="delete-user-by-id" class="btn btn-primary">Delete user by ID</button>
+                    <button type="button" id="get-user-by-id" class="btn btn-primary">Get user</button>
+                    <button type="button" id="delete-user-by-id" class="btn btn-primary">Delete user</button>
                     <button type="button" id="add-user" class="btn btn-primary">Add user</button>
+                    <button type="button" id="update-user" class="btn btn-primary">Update</button>
                 </form>
             </div>
             <div class="col-lg-12" id="ajax-container"></div>
