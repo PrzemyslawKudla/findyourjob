@@ -8,13 +8,18 @@
 
 $app->get('/api/advertisement', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
-});
-
-$app->delete('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
-    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
+    $advertisement = new  Advertisement();
+    $advertisement->getAllAdvertisements();
 });
 
 $app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request){
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
+    $id = $request->getAttribute('id');
+    $advertisement = new  Advertisement();
+    $advertisement->getAdvertisementById($id);
+});
+
+$app->delete('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
 });
 

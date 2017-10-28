@@ -11,12 +11,16 @@
 
     <link rel="stylesheet" href="css/global-styles.css">
     <link rel="stylesheet" href="js/libs/bootstrap/css/bootstrap.min.css">
+
     <script src="js/scripts/jquery-3.2.1.min.js"></script>
     <script src="js/ajax/user/getAllUsers.js"></script>
     <script src="js/ajax/user/getUserById.js"></script>
     <script src="js/ajax/user/deleteUserById.js"></script>
     <script src="js/ajax/user/addUser.js"></script>
     <script src="js/ajax/user/updateUser.js"></script>
+
+    <script src="js/ajax/advertisement/getAllAdvertisement.js"></script>
+    <script src="js/ajax/advertisement/getAdvertisementById.js"></script>
     <script src="js/scripts/global-scripts.js"></script>
 
 </head>

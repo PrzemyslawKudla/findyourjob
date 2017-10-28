@@ -36,4 +36,17 @@ class JSONUtils
         header('Content-Type: application/json');
         echo json_encode($json);
     }
+
+    public function processResult($query, $successCode, $successMessage, $errorCode, $errorMessage) {
+        $rows = array();
+        if ($query != null) {
+            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $result;
+            }
+            $this->convert_to_json($rows, $successCode, $successMessage);
+            $query->closeCursor();
+        } else {
+            $this->throwError($errorCode, $errorMessage);
+        }
+    }
 }

@@ -24,4 +24,36 @@ class AdvertisementDAO
             die();
         }
     }
+
+    public function getTable($tableName) {
+        $query = 'SELECT * FROM ' . $tableName;
+        $query = $this->db->query($query);
+        $rows = array();
+
+        if ($query != null) {
+            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $result;
+            }
+            $this->jsonUtils->convert_to_json($rows, 200, 'Success, all advertisement downloaded');
+            $query->closeCursor();
+        } else {
+            $this->jsonUtils->throwError(101, 'Error while getting advertisements');
+        }
+    }
+
+    public function getAdvertisementByID($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM advertisement WHERE  id_advertisement=$id");
+        $query->execute();
+        $rows = array();
+        if ($query->rowCount() > 0) {
+            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $result;
+            }
+            $this->jsonUtils->convert_to_json($rows, 200, "Success, advertisement (id=$id) downloaded");
+            $query->closeCursor();
+        } else {
+            $this->jsonUtils->throwError(101, "Error while getting advertisement (id=$id)");
+        }
+    }
 }

@@ -7,6 +7,7 @@
  */
 
 require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/UserDAO.php');
+
 class User
 {
     private $id_user;
@@ -116,8 +117,9 @@ class User
         $this->status = $status;
     }
 
-    public function addUser($login, $password, $name, $surname, $email, $rights, $status) {
-        $this->db->addUser($login, $password, $name, $surname, $email,$rights, $status);
+    public function addUser($login, $password, $name, $surname, $email, $rights, $status)
+    {
+        $this->db->addUser($login, $password, $name, $surname, $email, $rights, $status);
     }
 
     public function deleteUserById($id)
@@ -130,12 +132,18 @@ class User
         $this->db->getRecordsByID($this->table, $id);
     }
 
+    public function getUserPublicDataByID($id)
+    {
+        $this->db->getPublicUserData($this->table, $id);
+    }
+
     public function getAllUsers()
     {
         $this->db->getTable($this->table);
     }
 
-    public function updateUserByID($id, $name, $surname, $email) {
+    public function updateUserByID($id, $name, $surname, $email)
+    {
         $this->db->updateUser($id, $name, $surname, $email);
     }
 }

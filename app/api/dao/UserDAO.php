@@ -31,33 +31,25 @@ class UserDAO
     {
         $query = 'SELECT * FROM ' . $tableName;
         $query = $this->db->query($query);
-        $rows = array();
+        $this->jsonUtils->processResult($query,200,'Success, all users downloaded',101,
+            'Error while getting users');
+    }
 
-        if ($query != null) {
-            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $result;
-            }
-            $this->jsonUtils->convert_to_json($rows, 200, 'Success, table downloaded');
-            $query->closeCursor();
-        } else {
-            $this->jsonUtils->throwError(101, 'Error while getting table');
-        }
+    public function getPublicUserData($tableName, $id)
+    {
+        $query = $this->db->prepare("SELECT `login`, `name`, `surname`, `email` FROM  $tableName WHERE `id_user`=:id_user");
+        $query->bindParam(':id_user', $id);
+        $query->execute();
+        $this->jsonUtils->processResult($query,200,'Success, user public data downloaded',
+            101,'Error while getting user public data');
     }
 
     public function getRecordsByID($tableName, $id)
     {
         $query = $this->db->prepare("SELECT * FROM $tableName WHERE  id_user=$id");
         $query->execute();
-        $rows = array();
-        if ($query->rowCount() > 0) {
-            while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $result;
-            }
-            $this->jsonUtils->convert_to_json($rows, 200, 'Success, record downloaded');
-            $query->closeCursor();
-        } else {
-            $this->jsonUtils->throwError(101, 'Error while getting record');
-        }
+        $this->jsonUtils->processResult($query,200,'Success, record downloaded',101,
+            'Error while getting record');
     }
 
     public function deleteRecordById($id)
@@ -66,16 +58,13 @@ class UserDAO
         $query->bindParam(':id_user', $id);
         $query->execute();
 
-        if ($query->rowCount() > 0) {
-            $this->jsonUtils->convert_to_json(null, 200, "Success, record (id=$id) deleted");
-            $query->closeCursor();
-        } else {
-            $this->jsonUtils->throwError(101, 'Error while deleting record');
-        }
+        $this->jsonUtils->processResult($query,200,"Success, record (id=$id) deleted",101,
+            'Error while deleting record');
     }
 
     public function addUser($login, $password, $name, $surname, $email, $rights, $status)
-    {   $date = date('Y-m-d');
+    {
+        $date = date('Y-m-d');
         $query = $this->db->prepare("INSERT INTO user (`login`, `password`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
                                               VALUES (:login, :password, :user_name, :surname, :email, :rights, '$date', :status)");
         $query->bindParam(':login', $login);
@@ -87,15 +76,12 @@ class UserDAO
         $query->bindParam(':status', $status);
         $result = $query->execute();
 
-        if ($result) {
-            $this->jsonUtils->convert_to_json(null, 200, "Success, user added to database");
-            $query->closeCursor();
-        } else {
-            $this->jsonUtils->throwError(101, 'Error while adding user');
-        }
+        $this->jsonUtils->processResult($query,200,"Success, user added to database",101,
+            'Error while adding user');
     }
 
-    public function updateUser($id, $name, $surname, $email) {
+    public function updateUser($id, $name, $surname, $email)
+    {
         $query = $this->db->prepare("UPDATE user SET `name` = :user_name, `surname` = :surname, `email` = :email WHERE `id_user` = :id");
         $query->bindParam(':user_name', $name);
         $query->bindParam(':surname', $surname);
