@@ -27,4 +27,8 @@ class Advertisement
     public function deleteAdvertisementById($id) {
         $this->db->deleteAdvertisementById($id);
     }
+
+    public function addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id) {
+        $this->db->addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id);
+    }
 }

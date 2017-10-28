@@ -25,10 +25,11 @@ class AdvertisementDAO
         }
     }
 
-    public function getTable($tableName) {
+    public function getTable($tableName)
+    {
         $query = 'SELECT * FROM ' . $tableName;
         $query = $this->db->query($query);
-        $this->jsonUtils->processResult($query,200,"Success, advertisements downloaded",101,
+        $this->jsonUtils->processResult($query, 200, "Success, advertisements downloaded", 101,
             'Error while getting advertisements');
     }
 
@@ -36,7 +37,7 @@ class AdvertisementDAO
     {
         $query = $this->db->prepare("SELECT * FROM advertisement WHERE  id_advertisement=$id");
         $query->execute();
-        $this->jsonUtils->processResult($query,200,"Success, advertisement (id=$id) downloaded",101,
+        $this->jsonUtils->processResult($query, 200, "Success, advertisement (id=$id) downloaded", 101,
             "Error while getting advertisement (id=$id)");
     }
 
@@ -46,7 +47,28 @@ class AdvertisementDAO
         $query->bindParam(':id_ad', $id);
         $query->execute();
 
-        $this->jsonUtils->processResult($query,200,"Success, advertisement (id=$id) deleted",101,
+        $this->jsonUtils->processResult($query, 200, "Success, advertisement (id=$id) deleted", 101,
             'Error while deleting advertisement');
+    }
+
+    public function addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id)
+    {
+        $start_date = date('Y-m-d');
+        $exp_date = strtotime($start_date);
+        $exp_date = strtotime("+14 day", $exp_date);
+        $exp_date = date('Y-m-d',$exp_date);
+
+        $query = $this->db->prepare("INSERT INTO advertisement (`title`, `description`, `salary`, `user_id`, `status_id`, `category_id`, `localization_id`, `expiration_date`) 
+                                              VALUES (:title, :description, :salary, :user_id, 1, :category_id, :localization_id, '$exp_date')");
+        $query->bindParam(':title', $title);
+        $query->bindParam(':description', $description);
+        $query->bindParam(':salary', $salary);
+        $query->bindParam(':user_id', $user_id);
+        $query->bindParam(':category_id', $category_id);
+        $query->bindParam(':localization_id', $localization_id);
+        $query->execute();
+
+        $this->jsonUtils->processResultInsert($query, 200, "Success, user advertisement", 101,
+            'Error while adding advertisement');
     }
 }

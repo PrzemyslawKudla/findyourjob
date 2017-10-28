@@ -22,6 +22,7 @@
     <script src="js/ajax/advertisement/getAllAdvertisement.js"></script>
     <script src="js/ajax/advertisement/getAdvertisementById.js"></script>
     <script src="js/ajax/advertisement/deleteAdvertisement.js"></script>
+    <script src="js/ajax/advertisement/addAdvertisement.js"></script>
     <script src="js/scripts/global-scripts.js"></script>
 
 </head>
