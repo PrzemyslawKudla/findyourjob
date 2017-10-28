@@ -12,7 +12,7 @@ $app->get('/api/advertisement', function () {
     $advertisement->getAllAdvertisements();
 });
 
-$app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request){
+$app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $id = $request->getAttribute('id');
     $advertisement = new  Advertisement();
@@ -36,9 +36,18 @@ $app->post('/api/advertisement', function (\Slim\Http\Request $request) {
     $localization_id = $request->getParsedBody()['localization_id'];
 
     $advertisement = new  Advertisement();
-    $advertisement->addAdvertisement($title, $description,$salary,$user_id,$category_id,$localization_id);
+    $advertisement->addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id);
 });
 
-$app->put('/api/advertisement', function (\Slim\Http\Request $request){
+$app->put('/api/advertisement', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
+    $advertisement_id = $request->getParsedBody()['advertisement_id'];
+    $title = $request->getParsedBody()['title'];
+    $description = $request->getParsedBody()['description'];
+    $salary = $request->getParsedBody()['salary'];
+    $category_id = $request->getParsedBody()['category_id'];
+    $localization_id = $request->getParsedBody()['localization_id'];
+
+    $advertisement = new  Advertisement();
+    $advertisement->updateAdvertisement($advertisement_id, $title, $description, $salary, $category_id, $localization_id);
 });

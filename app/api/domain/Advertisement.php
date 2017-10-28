@@ -31,4 +31,8 @@ class Advertisement
     public function addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id) {
         $this->db->addAdvertisement($title, $description, $salary, $user_id, $category_id, $localization_id);
     }
+
+    public function updateAdvertisement($id, $title, $description, $salary, $category_id, $localization_id){
+        $this->db->updateAdvertisement($id, $title, $description, $salary, $category_id, $localization_id);
+    }
 }

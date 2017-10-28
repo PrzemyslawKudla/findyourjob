@@ -56,7 +56,7 @@ class AdvertisementDAO
         $start_date = date('Y-m-d');
         $exp_date = strtotime($start_date);
         $exp_date = strtotime("+14 day", $exp_date);
-        $exp_date = date('Y-m-d',$exp_date);
+        $exp_date = date('Y-m-d', $exp_date);
 
         $query = $this->db->prepare("INSERT INTO advertisement (`title`, `description`, `salary`, `user_id`, `status_id`, `category_id`, `localization_id`, `expiration_date`) 
                                               VALUES (:title, :description, :salary, :user_id, 1, :category_id, :localization_id, '$exp_date')");
@@ -70,5 +70,22 @@ class AdvertisementDAO
 
         $this->jsonUtils->processResultInsert($query, 200, "Success, user advertisement", 101,
             'Error while adding advertisement');
+    }
+
+    public function updateAdvertisement($id, $title, $description, $salary, $category_id, $localization_id)
+    {
+        $query = $this->db->prepare("UPDATE advertisement SET `title` = :title, `description` = :description,
+                                              `salary` = :salary, `category_id` = :category_id, `localization_id` = :localization_id  
+                                              WHERE `id_advertisement` = :id");
+        $query->bindParam(':id', $id);
+        $query->bindParam(':title', $title);
+        $query->bindParam(':description', $description);
+        $query->bindParam(':salary', $salary);
+        $query->bindParam(':category_id', $category_id);
+        $query->bindParam(':localization_id', $localization_id);
+        $query->execute();
+
+        $this->jsonUtils->processResultInsert($query, 200, "Success, advertisement updated", 101,
+            'Error while updating advertisement');
     }
 }
