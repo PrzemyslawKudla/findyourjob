@@ -74,9 +74,9 @@ class UserDAO
         $query->bindParam(':email', $email);
         $query->bindParam(':rights', $rights);
         $query->bindParam(':status', $status);
-        $result = $query->execute();
+        $query->execute();
 
-        $this->jsonUtils->processResult($query,200,"Success, user added to database",101,
+        $this->jsonUtils->processResultInsert($query,200,"Success, user added",101,
             'Error while adding user');
     }
 
@@ -87,14 +87,10 @@ class UserDAO
         $query->bindParam(':surname', $surname);
         $query->bindParam(':email', $email);
         $query->bindParam(':id', $id);
-        $result = $query->execute();
+        $query->execute();
 
-        if ($result) {
-            $this->jsonUtils->convert_to_json(null, 200, "Success, user updated");
-            $query->closeCursor();
-        } else {
-            $this->jsonUtils->throwError(101, 'Error while updating user');
-        }
+        $this->jsonUtils->processResultInsert($query,200,"Success, user updated",101,
+            'Error while updating user');
     }
 }
 

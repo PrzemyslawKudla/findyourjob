@@ -49,4 +49,13 @@ class JSONUtils
             $this->throwError($errorCode, $errorMessage);
         }
     }
+
+    public function processResultInsert($query, $successCode, $successMessage, $errorCode, $errorMessage) {
+        if ($query) {
+            $this->convert_to_json(null, $successCode, $successMessage);
+            $query->closeCursor();
+        } else {
+            $this->throwError($errorCode, $errorMessage);
+        }
+    }
 }

@@ -24,4 +24,7 @@ class Advertisement
     public function getAdvertisementById($id) {
         $this->db->getAdvertisementByID($id);
     }
+    public function deleteAdvertisementById($id) {
+        $this->db->deleteAdvertisementById($id);
+    }
 }

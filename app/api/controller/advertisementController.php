@@ -21,6 +21,9 @@ $app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request){
 
 $app->delete('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
+    $id = $request->getAttribute('id');
+    $advertisement = new  Advertisement();
+    $advertisement->deleteAdvertisementById($id);
 });
 
 $app->post('/api/advertisement', function (\Slim\Http\Request $request) {
