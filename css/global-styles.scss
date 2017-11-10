@@ -1,10 +1,25 @@
 body {
-  background: darkgray !important;
+
 }
 .container-fluid {
   background: darkgray;
   .ads {
     background-color: #33cc33;
     border-color: #33cc33;
+  }
+}
+.button-global {
+  padding: 10px 40px !important;
+  text-transform: uppercase;
+  background: #757575;
+  color: #ffffff;
+  border-radius: 2px;
+
+  &:hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #757575;
+    border: 1px solid #757575;
+
   }
 }

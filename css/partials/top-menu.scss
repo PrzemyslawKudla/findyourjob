@@ -1,0 +1,53 @@
+.navbar {
+  border-color: #212121;
+  .text-logo {
+    height: 31px;
+    transition: all .5s ease-in-out;
+    &:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+  }
+  .menu-items {
+    color: red;
+    ul {
+
+      &:first-child {
+        @include media-breakpoint-up(md) {
+            padding:100px
+        }
+      }
+      li {
+        .single-link {
+          color: #757575;
+          transition: .3s ease-out;
+          padding: 8px;
+          display: block;
+          text-decoration: none;
+
+          &:hover {
+            color: #B2EBF2;
+          }
+        }
+      }
+    }
+    .search-form {
+      .search-button {
+        color: #757575;
+        background-color: transparent;
+        border: 1px solid;
+        border-radius: 2px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #757575;
+          color: #212121;
+        }
+      }
+
+      .search-field {
+        border-radius: 2px;
+      }
+    }
+  }
+}

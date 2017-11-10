@@ -1,0 +1,37 @@
+.login-form {
+  margin-top: 15px;
+  margin-bottom: 50px;
+
+  .logo {
+    width: 500px;
+  }
+
+  .login-text {
+    padding-bottom: 15px;
+  }
+  .input-group-addon {
+    img {
+      height: 15px;
+    }
+  }
+
+  .btn {
+    a {
+      color: #000;
+    }
+  }
+
+  .form-check {
+    .form-check-label {
+      .form-check-input {
+        margin-top: 7px;
+      }
+    }
+  }
+
+  .forgot-password {
+    text-decoration: none;
+    padding-left: 15px;
+    transition: .3s ease-in-out;
+  }
+}

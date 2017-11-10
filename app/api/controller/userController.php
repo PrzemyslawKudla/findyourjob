@@ -24,6 +24,7 @@ $app->get('/api/user/{id}', function (\Slim\Http\Request $request){
     $id = $request->getAttribute('id');
     $user = new User();
     $user->getUserDataById($id);
+
 });
 
 $app->post('/api/user', function (\Slim\Http\Request $request) {

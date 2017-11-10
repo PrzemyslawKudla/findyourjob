@@ -7,6 +7,8 @@
     <title>Project</title>
     <meta name="Internet Applications Project" content="Internet Applications Project">
     <meta name="author" content="Przemysław Kudła">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
     <link rel="stylesheet" href="css/global-styles.css">
