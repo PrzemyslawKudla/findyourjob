@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <div class="form-group has-danger">
                         <label class="sr-only" for="email">E-Mail Address</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group">
                             <div class="input-group-addon">
                                 <img src="../assets/img/mail-icon.png" alt="mail">
                                 </i></div>

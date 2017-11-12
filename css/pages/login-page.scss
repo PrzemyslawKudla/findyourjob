@@ -1,19 +1,36 @@
+@import "../mixin/bootstrap-breakpoints";
+
 .login-form {
   margin-top: 15px;
   margin-bottom: 50px;
 
   .logo {
     width: 500px;
+    margin: auto;
+    display: block;
+
+    @include media-query-down(xs) {
+      width: 300px;
+    }
   }
 
   .login-text {
     padding-bottom: 15px;
   }
-  .input-group-addon {
-    img {
-      height: 15px;
+  .input-group {
+    .input-group-addon {
+      border-color: #212121;
+      border-radius: 2px;
+      img {
+        height: 15px;
+      }
+    }
+    input {
+      border-color: #212121;
+      border-radius: 2px;
     }
   }
+
 
   .btn {
     a {
