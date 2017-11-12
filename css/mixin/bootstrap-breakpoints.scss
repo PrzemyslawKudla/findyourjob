@@ -1,0 +1,42 @@
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+
+$breakpoints: (
+        "xs": 576px,
+        "sm": 768px,
+        "md": 992px,
+        "lg": 1200px,
+);
+
+@mixin media-query-only($down, $up) {
+  @if (map_has_key($breakpoints, $down) & & map_has_key($breakpoints, $up)) {
+    $down: map_get($breakpoints, $down);
+    $up: map_get($breakpoints, $up);
+
+    @media screen and (min-width: $down) and (max-width: $up) {
+      @content;
+    }
+  }
+}
+
+@mixin media-query-down($size) {
+  @if (map_has_key($breakpoints, $size)) {
+    $width: map_get($breakpoints, $size);
+
+    @media screen and (max-width: $width) {
+        @content;
+    }
+  }
+}
+
+@mixin media-query-up($size) {
+  @if (map_has_key($breakpoints, $size)) {
+    $width: map_get($breakpoints, $size);
+
+    @media screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
