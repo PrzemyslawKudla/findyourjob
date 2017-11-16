@@ -17,7 +17,7 @@
 <?php require_once("top-menu.php")?>
 <div class="container">
     <div class="row">
-        <form class="login-form col-lg-6 col-sm-12 mx-auto" role="form" method="POST" action="/login">
+        <form class="login-form col-lg-6 col-sm-12 mx-auto" role="form" method="post">
             <div class="row">
                 <div class="col-md-12">
                     <img class="logo" src="../assets/img/logo-v2.png" alt="logo">
@@ -27,13 +27,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group has-danger">
-                        <label class="sr-only" for="email">E-Mail Address</label>
+                        <label class="sr-only" for="email">Login</label>
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <img src="../assets/img/mail-icon.png" alt="mail">
                                 </i></div>
-                            <input type="text" name="email" class="form-control" id="email"
-                                   placeholder="Enter your email" required autofocus>
+                            <input type="text" name="login" class="form-control" id="login"
+                                   placeholder="Enter your login" required autofocus>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn button-global"> Login</button>
+                    <button type="submit" id="login-button" class="btn button-global"> Login</button>
                     <a class="forgot-password" href="">Forgot Your Password?</a>
                 </div>
             </div>
@@ -74,6 +74,8 @@
 </div>
 
 <script src="../js/scripts/jquery-3.2.1.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/ajax/login.js"></script>
 </body>
 </html>

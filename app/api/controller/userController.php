@@ -6,10 +6,17 @@
  * Time: 21:31
  */
 
+
 $app->get('/api/user', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
-    $user = new User();
-    $user->getAllUsers();
+   // $user = new User();
+   // $user->getAllUsers();
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/functions/UserAccess.php');
+
+    $userAccess = new UserAccess();
+    $userAccess->checkUserIsLoggedIn($_SESSION['userLogin']);
+
+    echo $_SESSION['userLogin']."test";
 });
 
 $app->delete('/api/user/{id}', function (\Slim\Http\Request $request) {
@@ -36,6 +43,8 @@ $app->post('/api/user', function (\Slim\Http\Request $request) {
     $email = $request->getParsedBody()['email'];
     $rights = $request->getParsedBody()['rights'];
     $status = $request->getParsedBody()['status'];
+
+
 
     $user = new User();
     $user->addUser($login,$password,$name,$surname,$email,$rights,$status);

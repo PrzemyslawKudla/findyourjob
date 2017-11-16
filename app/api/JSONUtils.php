@@ -58,4 +58,8 @@ class JSONUtils
             $this->throwError($errorCode, $errorMessage);
         }
     }
+
+    public function decodeJSONSObject($json, $keyName) {
+        echo $json[$keyName];
+    }
 }
