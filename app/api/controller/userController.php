@@ -9,14 +9,18 @@
 
 $app->get('/api/user', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
-   // $user = new User();
-   // $user->getAllUsers();
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/functions/UserAccess.php');
 
     $userAccess = new UserAccess();
-    $userAccess->checkUserIsLoggedIn($_SESSION['userLogin']);
+    $jsonUtils = new JSONUtils();
+    $resultJSON = $userAccess->checkUserIsLoggedIn($_SESSION['userLogin']);
+    $result = $jsonUtils->decodeJSONSObject($resultJSON, "data");
+    if($result) {
+        $user = new User();
+         $user->getAllUsers();
+    }
 
-    echo $_SESSION['userLogin']."test";
+
 });
 
 $app->delete('/api/user/{id}', function (\Slim\Http\Request $request) {

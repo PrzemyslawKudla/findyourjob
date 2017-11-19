@@ -52,21 +52,24 @@ class UserAccessDAO
         $user['name'] = $res['name'];
         $user['id'] = $res['id_user'];
         $pass_in_db = $res['password'];
-
+        $user_id = $user['id'];
         $decodePass = PassCrypt::compare($pass_in_db, $pass, $salt);
 
         if ($decodePass) {
-            $this->db->exec("UPDATE `user` SET `last_login` = " . time() . " WHERE login = '" . $login . "';");
-
-            $res = $this->db->prepare("SELECT id_user FROM user WHERE login= :login");
-            $res->bindValue(':login', $login, PDO::PARAM_STR);
-            $success = $res->execute();
-
-            $res = $res->fetch(PDO::FETCH_ASSOC);
-            $user_id = $res['id_user'];
-            $query = $this->db->query("INSERT INTO session(session_id, user_id, hash) VALUES('','" . $user_id . "','" . $hash . "')");
-            if ($query && $success) {
-                $this->jsonUtils->convert_to_json($user, 200, "Login success");
+            //Checking if user is already logged in
+            $res = $this->db->prepare("SELECT user_id FROM session WHERE user_id = :user_id");
+            $res->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+            $res->execute();
+            if ($res->rowCount() != 0) {
+                $this->jsonUtils->convert_to_json(false, 107, "User is already logged in");
+                exit;
+            } else {
+                $this->db->exec("UPDATE `user` SET `last_login` = " . time() . " WHERE login = '" . $login . "';");
+                $query = $this->db->query("INSERT INTO session(session_id, user_id, hash)
+                VALUES('','" . $user_id . "','" . $hash . "')");
+                if ($query) {
+                    $this->jsonUtils->convert_to_json($user, 200, "Login success");
+                }
             }
         } else {
             $this->jsonUtils->convert_to_json(null, 100, "Login failed. Incorrect credentials");
@@ -109,7 +112,7 @@ class UserAccessDAO
                     }
                 } else $this->jsonUtils->convert_to_json(false, 106, "Password isn't the same");
             } else $this->jsonUtils->convert_to_json(false, 107, "This login is in use");
-        } else $this->jsonUtils->convert_to_json(false, 108, "PLease, fill all fields");
+        } else $this->jsonUtils->convert_to_json(false, 108, "Please, fill all fields");
     }
 
     private function filterUserData($string)
@@ -132,11 +135,10 @@ class UserAccessDAO
     public function checkUserIsLoggedIn($userLogin)
     {
         if (isset($_SESSION['hash']) && $_SESSION['hash']) {
-            if($_SESSION['hash'] == $this->getHashByID($this->getIdByLogin($userLogin))) {
-                $this->jsonUtils->convert_to_json(true,203,'User is logged in');
-            }
-            else {
-                $this->jsonUtils->convert_to_json(false,106,'User is not logged in!');
+            if ($_SESSION['hash'] == $this->getHashByID($this->getIdByLogin($userLogin))) {
+                return true;
+            } else {
+                return false;
             }
         }
     }
@@ -154,7 +156,8 @@ class UserAccessDAO
         }
     }
 
-    public function getHashByID($ID) {
+    public function getHashByID($ID)
+    {
         $res = $this->db->prepare("SELECT hash FROM session WHERE user_id= :id_user");
         $res->bindValue(':id_user', $ID, PDO::PARAM_STR);
         $success = $res->execute();

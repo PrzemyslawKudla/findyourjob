@@ -19,6 +19,7 @@ class JSONUtils
         }
         header('Content-Type: application/json');
         echo json_encode($json);
+        return json_encode($json);
     }
 
     public function throwError($code, $message) {
@@ -60,6 +61,7 @@ class JSONUtils
     }
 
     public function decodeJSONSObject($json, $keyName) {
-        echo $json[$keyName];
+        $result = json_decode($json, true);
+        return $result[$keyName];
     }
 }

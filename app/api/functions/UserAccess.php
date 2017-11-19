@@ -30,7 +30,7 @@ class UserAccess
 
     public function checkUserIsLoggedIn($userLogin)
     {
-        $this->userAcces->checkUserIsLoggedIn($userLogin);
+       return $this->userAcces->checkUserIsLoggedIn($userLogin);
     }
 
     public function checkHash($id) {
