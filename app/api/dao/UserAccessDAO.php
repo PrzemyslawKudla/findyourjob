@@ -41,7 +41,7 @@ class UserAccessDAO
         $res->bindValue(':login', $login, PDO::PARAM_STR);
         $res->execute();
         if ($res->rowCount() < 1) {
-            $this->jsonUtils->convert_to_json(false, 100, "Incorrect user login");
+            $this->jsonUtils->throwError( 100, "Incorrect user login");
             exit;
         }
         $res = $res->fetch(PDO::FETCH_ASSOC);
@@ -68,6 +68,7 @@ class UserAccessDAO
                 $query = $this->db->query("INSERT INTO session(session_id, user_id, hash)
                 VALUES('','" . $user_id . "','" . $hash . "')");
                 if ($query) {
+                    $_SESSION['is_logged_in'] = true;
                     $this->jsonUtils->convert_to_json($user, 200, "Login success");
                 }
             }
@@ -108,11 +109,11 @@ class UserAccessDAO
                     if ($result) {
                         $this->jsonUtils->convert_to_json(true, 201, "Record added to database");
                     } else {
-                        $this->jsonUtils->convert_to_json(false, 105, "INSERT error");
+                        $this->jsonUtils->throwError( 105, "INSERT error");
                     }
-                } else $this->jsonUtils->convert_to_json(false, 106, "Password isn't the same");
-            } else $this->jsonUtils->convert_to_json(false, 107, "This login is in use");
-        } else $this->jsonUtils->convert_to_json(false, 108, "Please, fill all fields");
+                } else $this->jsonUtils->throwError(106, "Password isn't the same");
+            } else $this->jsonUtils->throwError(107, "This login is in use");
+        } else $this->jsonUtils->throwError(108, "Please, fill all fields");
     }
 
     private function filterUserData($string)

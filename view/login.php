@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(isset( $_SESSION['is_logged_in']) &&  $_SESSION['is_logged_in'] != null){
+    if( $_SESSION['is_logged_in'] == true) {
+        header('Location: '.'/view/home.php');
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pl_PL">
 <head>
@@ -35,6 +45,7 @@
                             <input type="text" name="login" class="form-control" id="login"
                                    placeholder="Enter your login" required autofocus>
                         </div>
+                        <span class="login-required">Uzupełnij to pole</span>
                     </div>
                 </div>
             </div>
@@ -49,6 +60,7 @@
                             <input type="password" name="password" class="form-control" id="password"
                                    placeholder="Password" required>
                         </div>
+                        <span class="password-required">Uzupełnij to pole</span>
                     </div>
                 </div>
             </div>
