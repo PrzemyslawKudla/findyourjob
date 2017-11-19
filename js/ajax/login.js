@@ -2,14 +2,10 @@ $(document).ready(function () {
 
     var btn = document.getElementById("login-button");
 
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (event) {
+        event.preventDefault();
         var login = $('#login').val();
         var password = $('#password').val();
-
-        // if(checkInput(login) && checkInput(password))
-        // {
-        //
-        // }
 
         $.ajax({
             type: "POST",
@@ -28,10 +24,6 @@ $(document).ready(function () {
             error: function () {
             }
         });
+        return false;
     });
-
-    function checkInput(value) {
-        return value !== "";
-    }
-
 });

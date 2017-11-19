@@ -17,7 +17,7 @@
 <?php require_once("top-menu.php")?>
 <div class="container">
     <div class="row">
-        <form class="login-form col-lg-6 col-sm-12 mx-auto" role="form" method="post">
+        <form class="login-form col-lg-6 col-sm-12 mx-auto" role="form">
             <div class="row">
                 <div class="col-md-12">
                     <img class="logo" src="../assets/img/logo-v2.png" alt="logo">
