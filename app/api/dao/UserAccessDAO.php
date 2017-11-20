@@ -35,9 +35,8 @@ class UserAccessDAO
         $pass = $this->filterUserData($password);
         $hash = $this->generateHash($login . time());
         $_SESSION['hash'] = $hash;
-        $_SESSION['userLogin'] = $login;
 
-        $res = $this->db->prepare("SELECT id_user, login, password, salt, rights, name FROM user WHERE login = :login");
+        $res = $this->db->prepare("SELECT id_user, login, password, salt, rights, name, surname FROM user WHERE login = :login");
         $res->bindValue(':login', $login, PDO::PARAM_STR);
         $res->execute();
         if ($res->rowCount() < 1) {
@@ -51,11 +50,14 @@ class UserAccessDAO
         $user['rights'] = $res['rights'];
         $user['name'] = $res['name'];
         $user['id'] = $res['id_user'];
+        $user['surname'] = $res['surname'];
         $pass_in_db = $res['password'];
         $user_id = $user['id'];
+        $_SESSION['userLogin'] = $res['login'];
         $decodePass = PassCrypt::compare($pass_in_db, $pass, $salt);
 
         if ($decodePass) {
+            $_SESSION['user_data'] = $user;
             //Checking if user is already logged in
             $res = $this->db->prepare("SELECT user_id FROM session WHERE user_id = :user_id");
             $res->bindValue(':user_id', $user_id, PDO::PARAM_STR);
@@ -168,5 +170,15 @@ class UserAccessDAO
         } else {
             return null;
         }
+    }
+
+    public function logOut(){
+        $userId = $_SESSION['user_data']['id'];
+        $query = $this->db->prepare("DELETE FROM sesion WHERE user_id = :user_id");
+        $query->bindParam(':user_id', $userId);
+        $query->execute();
+        session_unset();
+        $this->jsonUtils->throwError(200,"User logged out",101,
+            'Error while logging out');
     }
 }

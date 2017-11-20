@@ -3,6 +3,7 @@ session_start();
 if(isset( $_SESSION['is_logged_in']) &&  $_SESSION['is_logged_in'] != null){
     if( $_SESSION['is_logged_in'] == true) {
         header('Location: '.'/view/home.php');
+        exit;
     }
 }
 

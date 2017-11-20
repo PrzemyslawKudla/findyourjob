@@ -30,7 +30,7 @@
       border-radius: 2px;
     }
   }
-  .login-required, .password-required {
+  .login-required, .password-required, .password2-required, .name-required, .surname-required, .email-required {
     color: red;
     // transition: all .4s ease-in-out;
     display: none;
@@ -50,9 +50,12 @@
     }
   }
 
-  .forgot-password {
+  .login-link {
     text-decoration: none;
-    padding-left: 15px;
-    transition: .3s ease-in-out;
+    padding-left: 5px;
+  }
+
+  .have-account {
+    padding-left: 10px;
   }
 }

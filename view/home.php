@@ -20,6 +20,7 @@
 <div class="container">
     <div class="row">
         <h2>Home page - User : <?=  $_SESSION['userLogin'] ?></h2>
+        <p><?php print_r($_SESSION['user_data']); ?></p>
     </div>
 </div>
 

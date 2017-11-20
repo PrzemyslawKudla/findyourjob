@@ -36,5 +36,9 @@ class UserAccess
     public function checkHash($id) {
        return $this->userAcces->getHashByID($id);
     }
+
+    public function logOut() {
+        $this->userAcces->logOut();
+    }
 }
 
