@@ -17,5 +17,5 @@ $app->post('/api/register', function (\Slim\Http\Request $request) {
     $surname = $request->getParsedBody()['surname'];
 
     $registerUser = new UserAccess();
-    $registerUser->register($login, $password1, $password2,$email, $name, $surname);
+    $registerUser->register($login, $password1, $password2, $email, $name, $surname);
 });

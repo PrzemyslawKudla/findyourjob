@@ -8,38 +8,38 @@ $(document).ready(function () {
     }
 
     function showWarning(login, email, password, password2, name, surname) {
-        if(!checkInput(login)){
+        if (!checkInput(login)) {
             $('.login-required').addClass('d-block');
         }
         else {
             $('.login-required').removeClass('d-block');
         }
-        if(!checkInput(email)){
+        if (!checkInput(email)) {
             $('.email-required').addClass('d-block');
         }
         else {
             $('.email-required').removeClass('d-block');
         }
-        if(!checkInput(password)){
+        if (!checkInput(password)) {
             $('.password-required').addClass('d-block');
         }
         else {
             $('.password-required').removeClass('d-block');
 
         }
-        if(!checkInput(password2)){
+        if (!checkInput(password2)) {
             $('.password2-required').addClass('d-block');
         }
         else {
             $('.password2-required').removeClass('d-block');
         }
-        if(!checkInput(name)){
+        if (!checkInput(name)) {
             $('.name-required').addClass('d-block');
         }
         else {
             $('.name-required').removeClass('d-block');
         }
-        if(!checkInput(surname)){
+        if (!checkInput(surname)) {
             $('.surname-required').addClass('d-block');
         }
         else {
@@ -67,15 +67,16 @@ $(document).ready(function () {
                 cash: false,
                 data: {
                     'login': login,
-                    'password': password,
+                    'password1': password,
                     'password2': password2,
-                    'email' : email,
-                    'name' : name,
-                    'surname' : surname
+                    'email': email,
+                    'name': name,
+                    'surname': surname
                 },
                 url: "http://findyourjob.dev/public/api/register",
                 dataType: 'json',
                 success: function (json) {
+                    console.log(json);
                     if (json.code >= 200 && json.code < 300) {
                         window.location.href = '/view/login.php';
                     }
@@ -83,13 +84,18 @@ $(document).ready(function () {
                         alert(json.message);
                     }
                 },
+
                 complete: function () {
                 },
                 error: function () {
                 }
             });
         }
+        else {
+            console.log("error");
+            console.log(login + ' ' + password + ' ' + password2 + ' ' + email + ' ' + name + ' ' + surname);
 
+        }
         return false;
     });
 });

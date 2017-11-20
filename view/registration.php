@@ -127,7 +127,7 @@ if(isset( $_SESSION['is_logged_in']) &&  $_SESSION['is_logged_in'] != null){
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" id="register-button" class="btn button-global"> Register</button>
+                    <button type="submit" id="register-button" class="btn button-global">Register</button>
                     <span class="have-account">You have account?</span>
                     <a class="login-link" href="/view/login.php"> Log in</a>
                 </div>
