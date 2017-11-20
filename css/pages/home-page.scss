@@ -1,0 +1,59 @@
+.main-container {
+  margin-top: 20px;
+  color: #212121;
+
+  .left-nav {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .main-content {
+
+    .adds-header {
+      text-align: center;
+      padding-bottom: 15px;
+    }
+
+    .single-add {
+
+      margin-bottom: 15px;
+      .add-details {
+
+        padding-top: 15px;
+        .text-row{
+          .single-add-icon {
+            height: 20px;
+          }
+        }
+      }
+      .add-image {
+        width: 180px;
+      }
+
+    }
+    .read-more {
+      text-decoration: none;
+      padding-left: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .right-nav {
+    .single-popular {
+
+    }
+  }
+
+  .user-adds {
+    margin-top: 15px;
+  }
+
+  .box-style {
+    border: 1px solid #B2EBF2;
+    border-radius: 2px;
+    padding: 5px;
+  }
+}
