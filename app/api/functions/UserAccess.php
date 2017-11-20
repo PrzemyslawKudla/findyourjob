@@ -8,7 +8,6 @@
 
 require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/UserAccessDAO.php');
 
-
 class UserAccess
 {
     private $userAcces;

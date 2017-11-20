@@ -46,6 +46,9 @@ $(document).ready(function () {
                     if (json.code >= 200 && json.code < 300) {
                         window.location.href = '/view/home.php';
                     }
+                    else if(json.code = 111) {
+                        window.location.href = '/view/home.php';
+                    }
                     else {
                         alert(json.message);
                     }

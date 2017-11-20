@@ -6,12 +6,13 @@
  * Time: 19:48
  */
 
-session_start();
+//session_start();
 
 class UserAccessDAO
 {
     public $db;
     public $jsonUtils;
+    public $userID;
 
     function __construct()
     {
@@ -36,7 +37,7 @@ class UserAccessDAO
         $hash = $this->generateHash($login . time());
         $_SESSION['hash'] = $hash;
 
-        $res = $this->db->prepare("SELECT id_user, login, password, salt, rights, name, surname FROM user WHERE login = :login");
+        $res = $this->db->prepare("SELECT id_user, login, password, salt, rights, name, surname, email FROM user WHERE login = :login");
         $res->bindValue(':login', $login, PDO::PARAM_STR);
         $res->execute();
         if ($res->rowCount() < 1) {
@@ -51,8 +52,10 @@ class UserAccessDAO
         $user['name'] = $res['name'];
         $user['id'] = $res['id_user'];
         $user['surname'] = $res['surname'];
+        $user['email'] = $res['email'];
         $pass_in_db = $res['password'];
         $user_id = $user['id'];
+        $this->userID = $user_id;
         $_SESSION['userLogin'] = $res['login'];
         $decodePass = PassCrypt::compare($pass_in_db, $pass, $salt);
 
@@ -63,7 +66,7 @@ class UserAccessDAO
             $res->bindValue(':user_id', $user_id, PDO::PARAM_STR);
             $res->execute();
             if ($res->rowCount() != 0) {
-                $this->jsonUtils->convert_to_json(false, 107, "User is already logged in");
+                $this->jsonUtils->convert_to_json(false, 111, "User is already logged in");
                 exit;
             } else {
                 $this->db->exec("UPDATE `user` SET `last_login` = " . time() . " WHERE login = '" . $login . "';");
@@ -172,13 +175,21 @@ class UserAccessDAO
         }
     }
 
-    public function logOut(){
-        $userId = $_SESSION['user_data']['id'];
-        $query = $this->db->prepare("DELETE FROM sesion WHERE user_id = :user_id");
-        $query->bindParam(':user_id', $userId);
-        $query->execute();
-        session_unset();
-        $this->jsonUtils->throwError(200,"User logged out",101,
-            'Error while logging out');
+    public function logOut()
+    {
+        if (isset($_SESSION['user_data']) && $_SESSION['user_data'] != null) {
+            $userId = $_SESSION['user_data'];
+            $userId = $userId['id'];
+            $query = $this->db->prepare("DELETE FROM session WHERE user_id = :user_id");
+            $query->bindParam(':user_id', $userId);
+            $query->execute();
+            unset($_SESSION['user_data']);
+            unset($_SESSION['userLogin']);
+            $this->jsonUtils->processResultInsert($query, 200, "User logged out", 101,
+                'Error while logging out');
+        }
+        else {
+            $this->jsonUtils->throwError(110, "Any user is logged in");
+        }
     }
 }

@@ -5,22 +5,13 @@
  * Date: 11.10.2017
  * Time: 21:31
  */
-
+session_start();
 
 $app->get('/api/user', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
-    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/functions/UserAccess.php');
-
-    $userAccess = new UserAccess();
-    $jsonUtils = new JSONUtils();
-    $resultJSON = $userAccess->checkUserIsLoggedIn($_SESSION['userLogin']);
-    $result = $jsonUtils->decodeJSONSObject($resultJSON, "data");
-    if($result) {
-        $user = new User();
-         $user->getAllUsers();
-    }
-
-
+    $rights =  $_SESSION['user_data']['rights'];
+    $user = new User();
+    $user->getAllUsers();
 });
 
 $app->delete('/api/user/{id}', function (\Slim\Http\Request $request) {
@@ -30,7 +21,7 @@ $app->delete('/api/user/{id}', function (\Slim\Http\Request $request) {
     $user->deleteUserById($id);
 });
 
-$app->get('/api/user/{id}', function (\Slim\Http\Request $request){
+$app->get('/api/user/{id}', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
     $id = $request->getAttribute('id');
     $user = new User();
@@ -49,12 +40,11 @@ $app->post('/api/user', function (\Slim\Http\Request $request) {
     $status = $request->getParsedBody()['status'];
 
 
-
     $user = new User();
-    $user->addUser($login,$password,$name,$surname,$email,$rights,$status);
+    $user->addUser($login, $password, $name, $surname, $email, $rights, $status);
 });
 
-$app->put('/api/user', function (\Slim\Http\Request $request){
+$app->put('/api/user', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
     $name = $request->getParsedBody()['name'];
     $surname = $request->getParsedBody()['surname'];

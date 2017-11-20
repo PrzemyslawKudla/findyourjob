@@ -76,7 +76,6 @@ $(document).ready(function () {
                 url: "http://findyourjob.dev/public/api/register",
                 dataType: 'json',
                 success: function (json) {
-                    console.log(json);
                     if (json.code >= 200 && json.code < 300) {
                         window.location.href = '/view/login.php';
                     }

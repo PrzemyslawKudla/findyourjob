@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="pl_PL">
@@ -16,11 +17,15 @@
 
 </head>
 <body>
-<?php require_once("top-menu.php")?>
+<?php require_once("top-menu.php") ?>
 <div class="container">
     <div class="row">
-        <h2>Home page - User : <?=  $_SESSION['userLogin'] ?></h2>
-        <p><?php print_r($_SESSION['user_data']); ?></p>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">Hello <?= $_SESSION['userLogin'] ?></div>
+        <div class="col-lg-8">
+        </div>
+        <div class="col-lg-2"></div>
     </div>
 </div>
 
