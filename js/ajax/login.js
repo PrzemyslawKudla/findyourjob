@@ -43,8 +43,11 @@ $(document).ready(function () {
                 url: "http://findyourjob.dev/public/api/login",
                 dataType: 'json',
                 success: function (json) {
-                    if (json.code >= 200 && json.code < 300) {
+                    if (json.code >= 200 && json.code < 300 && json.data.rights === "user") {
                         window.location.href = '/view/home.php';
+                    }
+                    else if(json.code >= 200 && json.code < 300 && json.data.rights === "admin"){
+                        window.location.href = '/view/admin.php';
                     }
                     else if(json.code = 111) {
                         window.location.href = '/view/home.php';
