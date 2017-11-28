@@ -41,7 +41,7 @@ class UserAccessDAO
         $res->bindValue(':login', $login, PDO::PARAM_STR);
         $res->execute();
         if ($res->rowCount() < 1) {
-            $this->jsonUtils->throwError( 100, "Incorrect user login");
+            $this->jsonUtils->throwError(100, "Incorrect user login");
             exit;
         }
         $res = $res->fetch(PDO::FETCH_ASSOC);
@@ -114,7 +114,7 @@ class UserAccessDAO
                     if ($result) {
                         $this->jsonUtils->convert_to_json(true, 201, "Record added to database");
                     } else {
-                        $this->jsonUtils->throwError( 105, "INSERT error");
+                        $this->jsonUtils->throwError(105, "INSERT error");
                     }
                 } else $this->jsonUtils->throwError(106, "Password isn't the same");
             } else $this->jsonUtils->throwError(107, "This login is in use");
@@ -183,12 +183,14 @@ class UserAccessDAO
             $query = $this->db->prepare("DELETE FROM session WHERE user_id = :user_id");
             $query->bindParam(':user_id', $userId);
             $query->execute();
-            unset($_SESSION['user_data']);
-            unset($_SESSION['userLogin']);
+            unset($_SESSION);
+//            unset($_SESSION['user_data']);
+//            unset($_SESSION['is_logged_in']);
+//            unset($_SESSION['userLogin']);
+//            unset($_SESSION['hash']);
             $this->jsonUtils->processResultInsert($query, 200, "User logged out", 101,
                 'Error while logging out');
-        }
-        else {
+        } else {
             $this->jsonUtils->throwError(110, "Any user is logged in");
         }
     }
