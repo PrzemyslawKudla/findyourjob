@@ -5,6 +5,19 @@
     color: #212121;
 
   .left-nav {
+    .categories-header {
+       padding-bottom: 15px;
+       color: $secondaryColor;
+    }
+        ul {
+          padding-left: 0;
+          li {
+            a {
+              text-decoration: none;
+            }
+            list-style-type: none;
+          }
+        }
     p {
         margin-bottom: 0;
     }
@@ -15,6 +28,7 @@
     .adds-header {
         text-align: left;
         padding-bottom: 15px;
+        color: $secondaryColor;
     }
 
     .single-add {
@@ -25,6 +39,7 @@
       .left-col {
         img {
             height: 100px;
+            margin-top: 6px;
         }
       }
 
@@ -78,6 +93,12 @@
         -webkit-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
         -moz-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
         box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
+
+        webkit-transform: translateX(-10px);
+        -moz-transform: translateX(-10px);
+        -ms-transform: translateX(-10px);
+        -o-transform: translateX(-10px);
+        transform: translateX(-10px);
       }
     }
     .read-more {
