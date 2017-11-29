@@ -11,7 +11,7 @@
 
 
 
-    <link rel="stylesheet" href="css/global-styles.css">
+    <link rel="stylesheet" href="css/_global-styles.css">
     <link rel="stylesheet" href="js/libs/bootstrap/css/bootstrap.min.css">
 
     <script src="js/scripts/jquery-3.2.1.min.js"></script>

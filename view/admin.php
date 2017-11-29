@@ -21,7 +21,7 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
     <link href="../css/pages/admin-tabs.css" rel="stylesheet">
     <link href="../css/pages/option-accordions.css" rel="stylesheet">
     <link href="../css/partials/top-menu.css" rel="stylesheet">
-    <link href="../css/global-styles.css" rel="stylesheet">
+    <link href="../css/_global-styles.css" rel="stylesheet">
 
 </head>
 <body>

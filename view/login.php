@@ -21,7 +21,7 @@ if(isset( $_SESSION['is_logged_in']) &&  $_SESSION['is_logged_in'] != null){
     <link href="../js/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pages/login-page.css" rel="stylesheet">
     <link href="../css/partials/top-menu.css" rel="stylesheet">
-    <link href="../css/global-styles.css" rel="stylesheet">
+    <link href="../css/_global-styles.css" rel="stylesheet">
 
 </head>
 <body>

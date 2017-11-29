@@ -1,59 +1,103 @@
+@import "../global-styles.scss";
+
 .main-container {
-  margin-top: 20px;
-  color: #212121;
+    margin-top: 20px;
+    color: #212121;
 
   .left-nav {
     p {
-      margin-bottom: 0;
+        margin-bottom: 0;
     }
   }
 
   .main-content {
 
     .adds-header {
-      text-align: center;
-      padding-bottom: 15px;
+        text-align: left;
+        padding-bottom: 15px;
     }
 
     .single-add {
+        padding: 5px;
+        margin-bottom: 15px;
+        transition: all .3s ease-in-out;
 
-      margin-bottom: 15px;
-      .add-details {
+      .left-col {
+        img {
+            height: 100px;
+        }
+      }
 
-        padding-top: 15px;
-        .text-row{
-          .single-add-icon {
-            height: 20px;
+      .right-col {
+        h5 {
+          transition: color .3s ease-in-out;
+          color: $primaryColor;
+          padding-top: 5px;
+
+          &:hover {
+            color: $secondaryColor;
+          }
+        }
+        p {
+          margin-bottom: 0;
+          color: $secondaryColor;
+        }
+
+        .date-info {
+          padding-top: 5px;
+          padding-left: 5px;
+          p {
+            color: $primaryTextColor;
+            font-size: 14px;
+          }
+          a {
+            transition: color .3s ease-in-out;
+            font-size: 14px;
+            text-decoration: none;
+            color: $secondaryColor;
+
+            &:hover {
+              color: $primaryColor;
+            }
           }
         }
       }
-      .add-image {
-        width: 180px;
+
+      .description {
+        color: $primaryTextColor;
+        padding-top: 10px;
+        p {
+          padding: 0 10px;
+          font-size: 14px;
+          margin-bottom: 5px;
+        }
       }
 
-    }
-    .read-more {
-      text-decoration: none;
-      padding-left: 15px;
       &:hover {
         cursor: pointer;
+        -webkit-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
       }
     }
-  }
-
-  .right-nav {
-    .single-popular {
-
+    .read-more {
+        text-decoration: none;
+        padding-left: 10px;
+        margin-bottom: 5px;
+      display: block;
+      &:hover {
+          cursor: pointer;
+      }
     }
   }
 
   .user-adds {
-    margin-top: 15px;
+      margin-top: 15px;
   }
 
   .box-style {
-    border: 1px solid #B2EBF2;
-    border-radius: 2px;
-    padding: 5px;
+      border: 1px solid #B2EBF2;
+      border-radius: 2px;
+      padding: 5px;
   }
 }

@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] != null) {
-    if($_SESSION['is_logged_in'] != true) {
+    if ($_SESSION['is_logged_in'] != true) {
         header('Location: ' . '/view/home.php');
         exit;
     }
@@ -20,7 +20,7 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
     <link href="../js/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pages/home-page.css" rel="stylesheet">
     <link href="../css/partials/top-menu.css" rel="stylesheet">
-    <link href="../css/global-styles.css" rel="stylesheet">
+    <link href="../css/_global-styles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -29,114 +29,104 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
     <div class="row">
         <div class="col-lg-3">
             <div class="left-nav ">
-                <div class="user-info box-style">
-                    <p>Hello <b><?= $_SESSION['userLogin'] ?></b></p>
-                    <p>Last login: <b>12:32, 14 Jan 2107</b></p>
-                </div>
-                <div class="user-adds box-style">
-                    <p>Your adds:</p>
-                    Java developer.. <br>
-                    Location: Kraków
-                </div>
+                <h5 class="adds-header">Categories:</h5>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi deleniti distinctio
+                eaque, eligendi facilis fuga, fugiat harum inventore labore laborum minus molestiae mollitia
+                necessitatibus neque nesciunt nobis officia pariatur placeat porro quae quam quasi quod saepe ut vitae?
+                A dolorem, fuga?
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-9">
             <div class="main-content">
-                <h5 class="adds-header">Newest advertisements</h5>
+                <h5 class="adds-header">Job advertisement for you</h5>
                 <div class="single-add box-style">
                     <div class="row">
-                        <div class="col-md-6 add-details">
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/user_icon.png" alt=""></div>
-                                <div class="col-10"><b> Java senior developer</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/location-icon.png" alt=""></div>
-                                <div class="col-10"><b> Kraków</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/money-icon.png" alt=""></div>
-                                <div class="col-10"><b>4500 - 1200 PLN UoP</b></div>
+                        <div class="col-lg-2 left-col">
+                            <img src="../assets/img/java-logo.jpg" alt="">
+                        </div>
+                        <div class="col-lg-10 right-col">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h5>Java junior developer</h5>
+                                    <p><b>Employer: </b>Comarch S.A
+                                    <p><b>Localization: </b>Generała Jarosława Dąbrowskiego 20, 35-036 Rzeszów</p>
+                                    <p><b>Salary: </b>4000 - 7000PLN UoP</p>
+                                </div>
+                                <div class="col-lg-3 date-info">
+                                    <p class="added">12.10.2017 - 20.10.2017</p>
+                                    <a href="#">Java,</a>
+                                    <a href="#">Spring,</a>
+                                    <a href="#">Hibernate</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <img class="add-image" src="../assets/img/java-logo.jpg" alt="add image">
+                        <div class="col-lg-12 description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur atque dolorem
+                                eligendi error et harum hic in iusto non, pariatur placeat possimus rerum sapiente
+                                ullam. Asperiores modi mollitia porro! Autem dolorum molestias officia placeat quam sit
+                                sunt tenetur vitae..</p>
+                            <a href="#" class="read-more">Read more</a>
                         </div>
-                        <div class="col-md-12">EY Global Delivery Services means 24,000 specialists serving customers
-                            from significant number of countries across the world. Thus far, we have opened three
-                            offices in Poland where we speak 11 languages. Together with EY, we participate in diverse
-                            projects for our partners from all over the world and from almost all industries, providing
-                            high-quality and value-added support to our clients.
-                        </div>
-                        <a href="" class="read-more">Read more..</a>
                     </div>
                 </div>
-
                 <div class="single-add box-style">
                     <div class="row">
-                        <div class="col-md-6 add-details">
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/user_icon.png" alt=""></div>
-                                <div class="col-10"><b> Java senior developer</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/location-icon.png" alt=""></div>
-                                <div class="col-10"><b> Kraków</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/money-icon.png" alt=""></div>
-                                <div class="col-10"><b>4500 - 1200 PLN UoP</b></div>
+                        <div class="col-lg-2 left-col">
+                            <img src="../assets/img/java-logo.jpg" alt="">
+                        </div>
+                        <div class="col-lg-10 right-col">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h5>Java junior developer</h5>
+                                    <p><b>Employer: </b>Comarch S.A
+                                    <p><b>Localization: </b>Generała Jarosława Dąbrowskiego 20, 35-036 Rzeszów</p>
+                                    <p><b>Salary: </b>4000 - 7000PLN UoP</p>
+                                </div>
+                                <div class="col-lg-3 date-info">
+                                    <p class="added">12.10.2017 - 20.10.2017</p>
+                                    <a href="#">Java,</a>
+                                    <a href="#">Spring,</a>
+                                    <a href="#">Hibernate</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <img class="add-image" src="../assets/img/java-logo.jpg" alt="add image">
+                        <div class="col-lg-12 description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur atque dolorem
+                                eligendi error et harum hic in iusto non, pariatur placeat possimus rerum sapiente
+                                ullam. Asperiores modi mollitia porro! Autem dolorum molestias officia placeat quam sit
+                                sunt tenetur vitae..</p>
+                            <a href="#" class="read-more">Read more</a>
                         </div>
-                        <div class="col-md-12">EY Global Delivery Services means 24,000 specialists serving customers
-                            from significant number of countries across the world. Thus far, we have opened three
-                            offices in Poland where we speak 11 languages. Together with EY, we participate in diverse
-                            projects for our partners from all over the world and from almost all industries, providing
-                            high-quality and value-added support to our clients.
-                        </div>
-                        <a href="" class="read-more">Read more..</a>
                     </div>
                 </div>
-
                 <div class="single-add box-style">
                     <div class="row">
-                        <div class="col-md-6 add-details">
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/user_icon.png" alt=""></div>
-                                <div class="col-10"><b> Java senior developer</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/location-icon.png" alt=""></div>
-                                <div class="col-10"><b> Kraków</b></div>
-                            </div>
-                            <div class="row no-gutters text-row">
-                                <div class="col-2"><img class="single-add-icon" src="../assets/img/money-icon.png" alt=""></div>
-                                <div class="col-10"><b>4500 - 1200 PLN UoP</b></div>
+                        <div class="col-lg-2 left-col">
+                            <img src="../assets/img/java-logo.jpg" alt="">
+                        </div>
+                        <div class="col-lg-10 right-col">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h5>Java junior developer</h5>
+                                    <p><b>Employer: </b>Comarch S.A
+                                    <p><b>Localization: </b>Generała Jarosława Dąbrowskiego 20, 35-036 Rzeszów</p>
+                                    <p><b>Salary: </b>4000 - 7000PLN UoP</p>
+                                </div>
+                                <div class="col-lg-3 date-info">
+                                    <p class="added">12.10.2017 - 20.10.2017</p>
+                                    <a href="#">Java,</a>
+                                    <a href="#">Spring,</a>
+                                    <a href="#">Hibernate</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <img class="add-image" src="../assets/img/java-logo.jpg" alt="add image">
+                        <div class="col-lg-12 description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur atque dolorem
+                                eligendi error et harum hic in iusto non, pariatur placeat possimus rerum sapiente
+                                ullam. Asperiores modi mollitia porro! Autem dolorum molestias officia placeat quam sit
+                                sunt tenetur vitae..</p>
+                            <a href="#" class="read-more">Read more</a>
                         </div>
-                        <div class="col-md-12">EY Global Delivery Services means 24,000 specialists serving customers
-                            from significant number of countries across the world. Thus far, we have opened three
-                            offices in Poland where we speak 11 languages. Together with EY, we participate in diverse
-                            projects for our partners from all over the world and from almost all industries, providing
-                            high-quality and value-added support to our clients.
-                        </div>
-                        <a href="" class="read-more">Read more..</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="right-nav">
-                <div class="most-popular box-style">
-                    <h5>Most popular:</h5>
-                    <div class="single-popular">
-
                     </div>
                 </div>
             </div>
