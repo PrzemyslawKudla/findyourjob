@@ -1,0 +1,18 @@
+@import "../global-styles";
+
+table {
+    thead {
+       color: $secondaryColor;
+    }
+  tbody {
+      th {
+        color: $primaryColor;
+      }
+    tr {
+        padding: 0;
+      td {
+          padding: 5px 0;
+      }
+    }
+  }
+}
