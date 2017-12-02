@@ -18,6 +18,7 @@ class UserDAO
         try {
             require($_SERVER["DOCUMENT_ROOT"] . '/app/api/JSONUtils.php');
             require($_SERVER["DOCUMENT_ROOT"] . '/app/api/connection_data.php');
+            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/PassCrypt.php');
             $this->db = new PDO('mysql:host=' . $server_address . ';dbname=' . $db_name . ';charset=utf8', $user_login
                 , $user_password);
             $this->jsonUtils = new JSONUtils();
@@ -64,11 +65,14 @@ class UserDAO
 
     public function addUser($login, $password, $name, $surname, $email, $rights, $status)
     {
+        $salt = PassCrypt::salt($password);
+        $pass = PassCrypt::encode($password, $salt);
         $date = date('Y-m-d');
-        $query = $this->db->prepare("INSERT INTO user (`login`, `password`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
-                                              VALUES (:login, :password, :user_name, :surname, :email, :rights, '$date', :status)");
+        $query = $this->db->prepare("INSERT INTO user (`login`, `password`, `salt`, `name`, `surname`, `email`, `rights`, `date_of_register`, `status`) 
+                                              VALUES (:login, :password, :salt, :user_name, :surname, :email, :rights, '$date', :status)");
         $query->bindParam(':login', $login);
-        $query->bindParam(':password', $password);
+        $query->bindParam(':password', $pass);
+        $query->bindParam(':salt', $salt);
         $query->bindParam(':user_name', $name);
         $query->bindParam(':surname', $surname);
         $query->bindParam(':email', $email);

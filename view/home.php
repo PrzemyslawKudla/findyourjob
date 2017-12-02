@@ -173,5 +173,6 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/ajax/home-page.js"></script>
+<script src="../js/pages/home-get-adds.js"></script>
 </body>
 </html>

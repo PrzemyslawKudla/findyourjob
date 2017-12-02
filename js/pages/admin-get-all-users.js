@@ -1,7 +1,19 @@
 jQuery(function ($) {
-
+    var isEmpty = true;
     $('#see-all-users').on('click', function () {
-       getAllUsers();
+        if(!isEmpty) {
+            setTimeout(function () {
+                $('#all-users').empty();
+            },1000);
+
+        }
+     if($('#all-users tbody tr').length === 0) {
+         getAllUsers();
+         isEmpty = false;
+     }
+     else {
+         isEmpty = true;
+     }
     });
 
     function getAllUsers() {
@@ -11,7 +23,6 @@ jQuery(function ($) {
             url: "../public/api/user",
             dataType: 'json',
             success: function (json) {
-                console.log(json.data);
                 $('#all-users').append(createTableHead() + createTableRow(json))
             },
             complete: function () {

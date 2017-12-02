@@ -9,7 +9,7 @@ session_start();
 
 $app->get('/api/user', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');
-    $rights =  $_SESSION['user_data']['rights'];
+   // $rights =  $_SESSION['user_data']['rights'];
     $user = new User();
     $user->getAllUsers();
 });

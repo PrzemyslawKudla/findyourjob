@@ -18,10 +18,11 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 
 
     <link href="../js/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/pages/admin-tabs.css" rel="stylesheet">
-    <link href="../css/pages/options-accordion.css" rel="stylesheet">
+    <link href="../css/pages/admin-parts/admin-tabs.css" rel="stylesheet">
+    <link href="../css/pages/admin-parts/options-accordion.css" rel="stylesheet">
     <link href="../css/partials/top-menu.css" rel="stylesheet">
     <link href="../css/pages/admin.css" rel="stylesheet">
+    <link href="../css/pages/admin-parts/admin-add-user.css" rel="stylesheet">
     <link href="../css/_global-styles.css" rel="stylesheet">
 
 </head>
@@ -66,7 +67,7 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
                                 </div>
 
                             </div>
-
+                            <!--ADD USER                                 -->
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -75,13 +76,15 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
                                         </a>
                                     </h4>
                                 </div>
+
                                 <div id="two" class="panel-collapse collapse">
                                     <div class="panel-body">
+                                        <?php include_once('view-parts/admin-add-user.php');?>
                                     </div>
 
                                 </div>
                             </div>
-
+                            <!-- EBD OF ADD USER                                 -->
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -398,6 +401,7 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <script src="../js/scripts/jquery-3.2.1.min.js"></script>
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/pages/admin-dashboard.js"></script>
+<script src="../js/pages/admin-get-all-users.js"></script>
+<script src="../js/pages/admin-add-user.js"></script>
 </body>
 </html>
