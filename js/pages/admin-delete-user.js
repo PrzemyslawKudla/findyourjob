@@ -1,19 +1,7 @@
 jQuery(function ($) {
     var isEmpty = true;
     $('#delete-user').on('click', function () {
-        if(!isEmpty) {
-            setTimeout(function () {
-                $('#delete-users-table').empty();
-            },1000);
-
-        }
-        if($('#delete-users-table tbody tr').length === 0) {
-            getAllUsers();
-            isEmpty = false;
-        }
-        else {
-            isEmpty = true;
-        }
+        checkAndClearTable();
     });
 
     function getAllUsers() {
@@ -49,14 +37,14 @@ jQuery(function ($) {
     }
 
     function createTableRow(json) {
-        var row ='';
-        for (i = 0; i < json.data.length; i++){
-            row += '<tr><th>'+ (i + 1) + '</th>' +
-                '<td>'+ json.data[i].name +'</td>' +
-                '<td>'+ json.data[i].surname +'</td>' +
-                '<td>'+ json.data[i].login +'</td>' +
-                '<td>'+ json.data[i].email +'</td>' +
-                '<td><button class="button-global btn btn-delete-user" data-user-id="'+json.data[i].id_user+'">Delete</button>'+
+        var row = '';
+        for (i = 0; i < json.data.length; i++) {
+            row += '<tr><th>' + (i + 1) + '</th>' +
+                '<td>' + json.data[i].name + '</td>' +
+                '<td>' + json.data[i].surname + '</td>' +
+                '<td>' + json.data[i].login + '</td>' +
+                '<td>' + json.data[i].email + '</td>' +
+                '<td><button class="button-global btn btn-delete-user" data-user-id="' + json.data[i].id_user + '">Delete</button>' +
                 '</tr>';
         }
 
@@ -66,17 +54,24 @@ jQuery(function ($) {
 
     function addActionToDelete() {
         $('.btn-delete-user').on('click', function () {
-            var id = $(this).attr('data-user-id');
+           var id = $(this).attr('data-user-id');
+            $('.loader-container').show();
+
             $.ajax({
                 type: "DELETE",
                 cash: false,
-                url: '../public/api/user/'+id,
-                dataType : 'text',
-                success: function(json) {
+                url: '../public/api/user/' + id,
+                dataType: 'text',
+                success: function (json) {
                     console.log(json);
-                    alert('User has been removed');
+                        $('#delete-users-table').empty();
+                        getAllUsers();
+                        setTimeout(function () {
+                            $('.loader-container').hide();
+                        },1000);
+
                 },
-                complete: function() {
+                complete: function () {
                     console.log('completed');
                 },
                 error: function () {
@@ -85,4 +80,19 @@ jQuery(function ($) {
         })
     }
 
+    function checkAndClearTable() {
+        if (!isEmpty) {
+            setTimeout(function () {
+                $('#delete-users-table').empty();
+            }, 500);
+        }
+        if ($('#delete-users-table tbody tr').length === 0) {
+            getAllUsers();
+
+            isEmpty = false;
+        }
+        else {
+            isEmpty = true;
+        }
+    }
 });

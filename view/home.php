@@ -27,21 +27,35 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <?php require_once("top-menu.php") ?>
 <div class="container main-container">
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <div class="left-nav">
                 <h5 class="categories-header">Categories:</h5>
-                <div class="categories box-style">
-                    <ul>
-                        <li><a href="#">Java</a></li>
-                        <li><a href="#">PHP</a></li>
-                        <li><a href="#">Spring</a></li>
-                        <li><a href="#">C++</a></li>
-                        <li><a href="#">Java Script</a></li>
+                <div class="left-panel">
+                    <div class="categories">
+                        <ul>
+                            <li><a href="#">Java</a></li>
+                            <li><a href="#">PHP</a></li>
+                            <li><a href="#">Spring</a></li>
+                            <li><a href="#">C++</a></li>
+                            <li><a href="#">Java Script</a></li>
+                        </ul>
+                    </div>
+
+                    <h5 class="newest-header">Newest advertisements:</h5>
+                    <div class="newest">
+                        <ul>
+                            <li><a href="#">Junior JAVA developer - Kraków</a></li>
+                            <li><a href="#">PHP Senior - Warszawa</a></li>
+                            <li><a href="#">Android JUnior developer - Rzeszów</a></li>
+                            <li><a href="#">C++ Senior</a></li>
+                            <li><a href="#">Java Script, SQL, PHP Developer</a></li>
+                        </ul>
+                    </div>
                 </div>
-                </ul>
+
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-9">
             <div class="main-content">
                 <h5 class="adds-header">Job advertisement for you</h5>
                 <div class="single-add box-style">

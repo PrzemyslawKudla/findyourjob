@@ -5,21 +5,68 @@
     color: #212121;
 
   .left-nav {
+
     .categories-header {
-       padding-bottom: 15px;
-       color: $secondaryColor;
+        padding-bottom: 15px;
+        color: $secondaryColor;
     }
-        ul {
-          padding-left: 0;
-          li {
-            a {
+    .left-panel {
+        padding: 10px;
+        border: 1px solid #B2EBF2;
+
+      .newest-header {
+          color: $secondaryColor;
+          padding-top: 15px;
+          padding-bottom: 15px;
+      }
+
+      ul {
+        li {
+            -webkit-box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+            -moz-box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+            box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+            margin: 8px 0;
+            padding: 5px;
+            transition: all .3s ease-in-out;
+          a {
               text-decoration: none;
-            }
+          }
             list-style-type: none;
+
+          &:hover {
+              -moz-transform: translateX(-5px);
+              -ms-transform: translateX(-5px);
+              -o-transform: translateX(-5px);
+              transform: translateX(-5px);
+              cursor: pointer;
           }
         }
-    p {
+        padding-left: 0;
+      }
+      p {
         margin-bottom: 0;
+      }
+
+      .newest {
+        ul {
+          li {
+              -webkit-box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+              -moz-box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+              box-shadow: 2px 2px 6px 0px rgba(212, 186, 212, 1);
+              margin: 8px 0;
+              padding: 5px;
+              //border: 1px solid $secondaryColor;
+              transition: all .3s ease-in-out;
+            &:hover {
+                -moz-transform: translateX(-5px);
+                -ms-transform: translateX(-5px);
+                -o-transform: translateX(-5px);
+                transform: translateX(-5px);
+            }
+          }
+
+        }
+      }
     }
   }
 
@@ -38,8 +85,8 @@
 
       .left-col {
         img {
-            height: 100px;
-            margin-top: 6px;
+          height: 100px;
+          margin-top: 6px;
         }
       }
 
@@ -102,23 +149,23 @@
       }
     }
     .read-more {
-        text-decoration: none;
-        padding-left: 10px;
-        margin-bottom: 5px;
+      text-decoration: none;
+      padding-left: 10px;
+      margin-bottom: 5px;
       display: block;
       &:hover {
-          cursor: pointer;
+        cursor: pointer;
       }
     }
   }
 
   .user-adds {
-      margin-top: 15px;
+    margin-top: 15px;
   }
 
   .box-style {
-      border: 1px solid #B2EBF2;
-      border-radius: 2px;
-      padding: 5px;
+    border: 1px solid #B2EBF2;
+    border-radius: 2px;
+    padding: 5px;
   }
 }

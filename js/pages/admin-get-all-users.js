@@ -27,7 +27,9 @@ jQuery(function ($) {
                 $('#all-users').append(createTableHead() + createTableRow(json))
             },
             complete: function () {
-                $('.loader-container').hide();
+                setTimeout(function () {
+                    $('.loader-container').hide();
+                },1000);
             },
             error: function () {
                 console.log('error');
