@@ -28,6 +28,9 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 </head>
 <body>
 <?php require_once("top-menu.php") ?>
+<div class="loader-container">
+    <div class="loader"></div>
+</div>
 <div class="container main-container">
     <div class="row">
         <div class="col-12">
@@ -84,20 +87,23 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 
                                 </div>
                             </div>
-                            <!-- EBD OF ADD USER                                 -->
+                            <!-- END OF ADD USER                                 -->
+                            <!-- DELETE USER                               -->
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#three" id="delete-user">
                                             Delete user
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="three" class="panel-collapse collapse">
                                     <div class="panel-body">
+                                        <table class="table" id="delete-users-table"></table>
                                     </div>
                                 </div>
                             </div>
+                            <!-- END OF DELETE USER                               -->
 
                             <div class="panel">
                                 <div class="panel-heading">
@@ -403,5 +409,6 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/pages/admin-get-all-users.js"></script>
 <script src="../js/pages/admin-add-user.js"></script>
+<script src="../js/pages/admin-delete-user.js"></script>
 </body>
 </html>

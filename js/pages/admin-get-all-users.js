@@ -8,6 +8,7 @@ jQuery(function ($) {
 
         }
      if($('#all-users tbody tr').length === 0) {
+         $('.loader-container').show();
          getAllUsers();
          isEmpty = false;
      }
@@ -26,6 +27,7 @@ jQuery(function ($) {
                 $('#all-users').append(createTableHead() + createTableRow(json))
             },
             complete: function () {
+                $('.loader-container').hide();
             },
             error: function () {
                 console.log('error');

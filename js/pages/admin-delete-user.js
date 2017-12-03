@@ -1,13 +1,13 @@
 jQuery(function ($) {
     var isEmpty = true;
-    $('#see-all-users').on('click', function () {
+    $('#delete-user').on('click', function () {
         if(!isEmpty) {
             setTimeout(function () {
-                $('#all-users').empty();
+                $('#delete-users-table').empty();
             },1000);
 
         }
-        if($('#all-users tbody tr').length === 0) {
+        if($('#delete-users-table tbody tr').length === 0) {
             getAllUsers();
             isEmpty = false;
         }
@@ -18,17 +18,19 @@ jQuery(function ($) {
 
     function getAllUsers() {
         $.ajax({
-            type: "DELETE",
+            type: "GET",
             cash: false,
-            url: "../public/api/user/2",
-            dataType : 'text',
-            success: function(json) {
+            url: "../public/api/user",
+            dataType: 'json',
+            success: function (json) {
                 console.log(json);
+                $('#delete-users-table').append(createTableHead() + createTableRow(json));
+                addActionToDelete();
             },
-            complete: function() {
-                console.log('completed');
+            complete: function () {
             },
             error: function () {
+                console.log('error');
             }
         });
     }
@@ -42,10 +44,6 @@ jQuery(function ($) {
             '      <th>Surname</th>\n' +
             '      <th>Login</th>\n' +
             '      <th>E-mail</th>\n' +
-            '      <th>Rights</th>\n' +
-            '      <th>Status</th>\n' +
-            '      <th>Date of register</th>\n' +
-            '      <th>Last login</th>\n' +
             '    </tr>\n' +
             '  </thead>';
     }
@@ -58,14 +56,33 @@ jQuery(function ($) {
                 '<td>'+ json.data[i].surname +'</td>' +
                 '<td>'+ json.data[i].login +'</td>' +
                 '<td>'+ json.data[i].email +'</td>' +
-                '<td>'+ json.data[i].rights +'</td>' +
-                '<td>'+ json.data[i].status +'</td>' +
-                '<td>'+ json.data[i].date_of_register +'</td>' +
-                '<td>'+ json.data[i].last_login +'</td>' +
+                '<td><button class="button-global btn btn-delete-user" data-user-id="'+json.data[i].id_user+'">Delete</button>'+
                 '</tr>';
         }
+
         return row;
 
+    }
+
+    function addActionToDelete() {
+        $('.btn-delete-user').on('click', function () {
+            var id = $(this).attr('data-user-id');
+            $.ajax({
+                type: "DELETE",
+                cash: false,
+                url: '../public/api/user/'+id,
+                dataType : 'text',
+                success: function(json) {
+                    console.log(json);
+                    alert('User has been removed');
+                },
+                complete: function() {
+                    console.log('completed');
+                },
+                error: function () {
+                }
+            });
+        })
     }
 
 });
