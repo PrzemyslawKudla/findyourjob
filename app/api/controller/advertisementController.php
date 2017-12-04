@@ -19,6 +19,12 @@ $app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
     $advertisement->getAdvertisementById($id);
 });
 
+$app->get('/api/advertisements', function (\Slim\Http\Request $request) {
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
+    $advertisement = new Advertisement();
+    $advertisement->getSingleAdvertisementDataArray();
+});
+
 $app->delete('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $id = $request->getAttribute('id');

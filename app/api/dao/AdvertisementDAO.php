@@ -88,4 +88,18 @@ class AdvertisementDAO
         $this->jsonUtils->processResultInsert($query, 200, "Success, advertisement updated", 101,
             'Error while updating advertisement');
     }
+
+    public function getSingleAdvertisementDataArray()
+    {
+        $query = "SELECT a.title, a.description, a.salary, a.expiration_date, a.added_date,
+                     u.name as userName, c.name as company, j.name as category, l.address 
+                    FROM advertisement a, user u, company c, job_category j, localization l 
+                    WHERE u.id_user = a.user_id AND u.id_user = c.user_id 
+                    AND a.category_id = j.advertisement_id 
+                    AND a.localization_id = l.advertisement_id";
+
+        $result = $this->db->query($query);
+        $this->jsonUtils->processResult($result, 220, "Success, array of single advertisements downloaded", 109,
+            'Error while getting array of single adds');
+    }
 }
