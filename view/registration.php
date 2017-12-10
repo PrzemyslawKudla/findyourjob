@@ -1,7 +1,10 @@
 <?php
-session_start();
-if(isset( $_SESSION['is_logged_in']) &&  $_SESSION['is_logged_in'] != null){
-    if( $_SESSION['is_logged_in'] == true) {
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
+    if( $_SESSION['is-logged-in'] == true) {
      //   header('Location: '.'/view/home.php');
       //  exit;
     }

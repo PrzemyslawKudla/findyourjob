@@ -22,6 +22,11 @@
             <form class="form-inline search-form">
                 <input class="form-control mr-sm-2 search-field" type="text" placeholder="Search">
                 <button class="btn search-button" type="submit">Search</button>
+                <?php if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) :
+                ?>
+                <button id="button-log-out">Log out</button>
+
+                <?php endif; ?>
             </form>
         </div>
     </div>

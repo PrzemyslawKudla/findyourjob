@@ -43,28 +43,33 @@ $(document).ready(function () {
                 url: "http://findyourjob.dev/public/api/login",
                 dataType: 'json',
                 success: function (json) {
+                    console.log(json);
+                    console.log('Przed ');
                     if (json.code >= 200 && json.code < 300 && json.data.rights === "user") {
+                        console.log('1');
                         window.location.href = '/view/home.php';
                     }
                     else if(json.code >= 200 && json.code < 300 && json.data.rights === "admin"){
+                        console.log('2');
                         window.location.href = '/view/admin.php';
                     }
                     else if(json.code = 111) {
+                        console.log('3');
                         window.location.href = '/view/home.php';
                     }
-                    else {
-                        alert(json.message);
-                    }
+                    console.log('Po');
                 },
                 complete: function () {
+                    console.log('Complete mdfvwefgb');
                 },
                 error: function () {
+                    console.log('Error dsgu sgb gbjhadhfbsrej rgb jsrgb Ah ');
                 }
             });
         }
         else {
             console.log("Uzupełnij wszystkie pola");
         }
-        return false;
     });
+
 });

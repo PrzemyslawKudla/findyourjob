@@ -5,7 +5,10 @@
  * Date: 11.10.2017
  * Time: 21:31
  */
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 
 $app->get('/api/user', function () {
     require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/User.php');

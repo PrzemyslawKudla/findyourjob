@@ -1,10 +1,16 @@
-<?php session_start();
-if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] != null) {
-    if ($_SESSION['is_logged_in'] != true) {
-        header('Location: ' . '/view/home.php');
-        exit;
-    }
+<?php
+if(!isset($_SESSION))
+{
+    session_start();
 }
+if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) {
+print_r($_SESSION);
+}
+else {
+    header('Location: ' . '/view/login.php');
+    exit;
+}
+
 
 ?>
 
@@ -68,5 +74,6 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/ajax/home-page.js"></script>
 <script src="../js/pages/home-get-adds.js"></script>
+<script src="../js/ajax/log-out.js"></script>
 </body>
 </html>

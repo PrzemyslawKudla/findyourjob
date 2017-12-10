@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+{
+    session_start();
+}
 /**
  * Created by PhpStorm.
  * User: Przemek
@@ -6,7 +10,7 @@
  * Time: 19:48
  */
 
-//session_start();
+
 
 class UserAccessDAO
 {
@@ -42,7 +46,7 @@ class UserAccessDAO
         $res->execute();
         if ($res->rowCount() < 1) {
             $this->jsonUtils->throwError(100, "Incorrect user login");
-            exit;
+            exit();
         }
         $res = $res->fetch(PDO::FETCH_ASSOC);
         $salt = $res['salt'];
@@ -65,21 +69,22 @@ class UserAccessDAO
             $res = $this->db->prepare("SELECT user_id FROM session WHERE user_id = :user_id");
             $res->bindValue(':user_id', $user_id, PDO::PARAM_STR);
             $res->execute();
-            if ($res->rowCount() != 0) {
+            if ($res->rowCount() > 0) {
                 $this->jsonUtils->convert_to_json(false, 111, "User is already logged in");
-                exit;
+                exit();
             } else {
                 $this->db->exec("UPDATE `user` SET `last_login` = " . time() . " WHERE login = '" . $login . "';");
                 $query = $this->db->query("INSERT INTO session(session_id, user_id, hash)
                 VALUES('','" . $user_id . "','" . $hash . "')");
                 if ($query) {
-                    $_SESSION['is_logged_in'] = true;
+                    $_SESSION['is-logged-in'] = true;
                     $this->jsonUtils->convert_to_json($user, 200, "Login success");
+                    exit();
                 }
             }
         } else {
             $this->jsonUtils->convert_to_json(null, 100, "Login failed. Incorrect credentials");
-            exit;
+            exit();
         }
     }
 
@@ -183,11 +188,7 @@ class UserAccessDAO
             $query = $this->db->prepare("DELETE FROM session WHERE user_id = :user_id");
             $query->bindParam(':user_id', $userId);
             $query->execute();
-            unset($_SESSION);
-//            unset($_SESSION['user_data']);
-//            unset($_SESSION['is_logged_in']);
-//            unset($_SESSION['userLogin']);
-//            unset($_SESSION['hash']);
+            session_unset();
             $this->jsonUtils->processResultInsert($query, 200, "User logged out", 101,
                 'Error while logging out');
         } else {

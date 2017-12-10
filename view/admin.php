@@ -1,6 +1,10 @@
-<?php session_start();
-if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] != null) {
-    if ($_SESSION['is_logged_in'] != true) {
+<?php
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) {
+    if ($_SESSION['is-logged-in'] != true) {
         header('Location: ' . '/view/home.php');
         exit;
     }
@@ -410,5 +414,6 @@ if (isset($_SESSION) && isset($_SESSION['is_logged_in']) && $_SESSION['is_logged
 <script src="../js/pages/admin-get-all-users.js"></script>
 <script src="../js/pages/admin-add-user.js"></script>
 <script src="../js/pages/admin-delete-user.js"></script>
+<script src="../js/ajax/log-out.js"></script>
 </body>
 </html>
