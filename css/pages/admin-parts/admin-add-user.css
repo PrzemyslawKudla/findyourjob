@@ -1,0 +1,13 @@
+.add-user-form label {
+  background-color: white;
+  text-align: left;
+  margin-top: 5px; }
+.add-user-form select::-ms-expand {
+  display: none; }
+.add-user-form .button-wrapper {
+  text-align: right; }
+  .add-user-form .button-wrapper button {
+    margin-top: 15px;
+    margin-right: 0; }
+
+/*# sourceMappingURL=admin-add-user.css.map */

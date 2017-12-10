@@ -1,0 +1,33 @@
+.login-form {
+  margin-top: 15px;
+  margin-bottom: 50px; }
+  .login-form .logo {
+    width: 500px;
+    margin: auto;
+    display: block; }
+    @media screen and (max-width: 576px) {
+      .login-form .logo {
+        width: 300px; } }
+  .login-form .login-text {
+    padding-bottom: 15px; }
+  .login-form .input-group .input-group-addon {
+    border-color: #212121;
+    border-radius: 2px; }
+    .login-form .input-group .input-group-addon img {
+      height: 15px; }
+  .login-form .input-group input {
+    border-color: #212121;
+    border-radius: 2px; }
+  .login-form .login-required, .login-form .password-required {
+    color: red;
+    display: none; }
+  .login-form .btn a {
+    color: #000; }
+  .login-form .form-check .form-check-label .form-check-input {
+    margin-top: 7px; }
+  .login-form .forgot-password {
+    text-decoration: none;
+    padding-left: 15px;
+    transition: .3s ease-in-out; }
+
+/*# sourceMappingURL=login-page.css.map */
