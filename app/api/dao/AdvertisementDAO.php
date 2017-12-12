@@ -95,7 +95,6 @@ class AdvertisementDAO
                   c.name as company, j.name as category, l.address FROM advertisement a, user u, company c,
                   job_category j, localization l, advertisement_category ac 
                     WHERE u.id_user = a.user_id 
-                    AND u.id_user = c.user_id 
                     AND a.localization_id = l.id_localization
                     AND a.id_advertisment = ac.advertisement_id
                     AND j.id_category = ac.category_id";
@@ -103,5 +102,13 @@ class AdvertisementDAO
         $result = $this->db->query($query);
         $this->jsonUtils->processResult($result, 220, "Success, array of single advertisements downloaded", 109,
             'Error while getting array of single adds');
+    }
+
+    public function getCompanyLocalization($id)
+    {
+        $query = "SELECT longitude, latitude FROM localization WHERE id_localization = $id";
+        $result = $this->db->query($query);
+        $this->jsonUtils->processResult($result, 223, "Success, localization downloaded", 114,
+            'Error while getting localization');
     }
 }

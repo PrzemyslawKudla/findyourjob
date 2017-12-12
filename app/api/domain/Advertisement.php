@@ -39,4 +39,8 @@ class Advertisement
     public function getSingleAdvertisementDataArray() {
         $this->db->getSingleAdvertisementDataArray();
     }
+
+    public function getCompanyLocalization($id) {
+        $this->db->getCompanyLocalization($id);
+    }
 }
