@@ -73,7 +73,7 @@ $(document).ready(function () {
                     'name': name,
                     'surname': surname
                 },
-                url: "http://findyourjob.dev/public/api/register",
+                url: "http://findyourjob.local/public/api/register",
                 dataType: 'json',
                 success: function (json) {
                     if (json.code >= 200 && json.code < 300) {

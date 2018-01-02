@@ -4,7 +4,7 @@ $(document).ready(function () {
         $.ajax({
             type: "DELETE",
             cash: false,
-            url: "http://findyourjob.dev/public/api/user/2",
+            url: "http://findyourjob.local/public/api/user/2",
             dataType : 'text',
             success: function(json) {
                 console.log(json);

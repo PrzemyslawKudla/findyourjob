@@ -4,7 +4,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "http://findyourjob.dev/public/api/advertisement",
+            url: "http://findyourjob.local/public/api/advertisement",
             dataType : 'json',
             success: function(json) {
                 console.log(json);

@@ -12,7 +12,7 @@ $(document).ready(function () {
                 'email' : 'emailek@wp.pl',
                 'id' : 9
             },
-            url: "http://findyourjob.dev/public/api/user",
+            url: "http://findyourjob.local/public/api/user",
             dataType : 'json',
             success: function(json) {
                 console.log(json);

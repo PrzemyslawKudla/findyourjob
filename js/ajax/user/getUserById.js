@@ -6,7 +6,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "http://findyourjob.dev/public/api/user/1",
+            url: "http://findyourjob.local/public/api/user/1",
             dataType : 'json',
             success: function(json) {
                 console.log(json);

@@ -9,7 +9,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "http://findyourjob.dev/public/api/user",
+            url: "http://findyourjob.local/public/api/user",
             dataType : 'json',
             data: {
                 id : 'LoremIpsum',

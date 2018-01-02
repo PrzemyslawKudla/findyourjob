@@ -33,6 +33,7 @@ jQuery(function ($) {
             dataType: 'json',
             success: function (json) {
                 console.log(json);
+                alert(json.message);
             },
             complete: function () {
             },

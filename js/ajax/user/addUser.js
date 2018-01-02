@@ -15,7 +15,7 @@ $(document).ready(function () {
                 'rights' : 2,
                 'status' : 1
             },
-            url: "http://findyourjob.dev/public/api/user",
+            url: "http://findyourjob.local/public/api/user",
             dataType : 'json',
             success: function(json) {
                 console.log(json);
