@@ -3,7 +3,9 @@ jQuery(function ($) {
     var paramsArray = paramsURL.split('?');
     var addID = paramsArray[0].substring(3);
     var locID = paramsArray[1].substring(4);
-    console.log(addID + " : " + locID);
+
+    var lat = '';
+    var long = '';
 
     $.ajax({
         type: "GET",
@@ -12,6 +14,9 @@ jQuery(function ($) {
         dataType: 'json',
         success: function (json) {
             console.log(json);
+            lat = parseFloat(json.data[0].latitude);
+            long = parseFloat(json.data[0].longitude);
+
             function initMap() {
                 var uluru = {lat: parseFloat(json.data[0].latitude), lng: parseFloat(json.data[0].longitude)};
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -23,7 +28,9 @@ jQuery(function ($) {
                     map: map
                 });
             }
+
             initMap();
+            getWeatherInfo();
         },
         complete: function () {
         },
@@ -64,7 +71,7 @@ jQuery(function ($) {
                 '                        </div>\n' +
                 '                        <div class="col-lg-10 right-col">\n' +
                 '                            <div class="row">\n' +
-                '                                <div class="col-lg-9">\n' +
+                '                                <div class="col-lg-5">\n' +
                 '                                    <h5>' + json.data[i].title + '</h5>\n' +
                 '                                    <p><b>Employer: </b>' + json.data[i].company +
                 '                                    <p><b>Localization: </b>' + json.data[i].address + '</p>\n' +
@@ -76,14 +83,50 @@ jQuery(function ($) {
                 '                                    <a href="#">Spring,</a>\n' +
                 '                                    <a href="#">Hibernate</a>\n' +
                 '                                </div>\n' +
+                '                               <div class="col-lg-4 weather-info">' +
+                '                                   <div class="row">' +
+                '                                       <div class="col-3">' +
+                '                                           <p>Temp:</p>' +
+                '                                           <p>Wind:</p>' +
+                '                                           <p>Pressure:</p>' +
+                '                                       </div>' +
+                '                                       <div class="col-4">' +
+                '                                           <p class="weather-value">11</p>' +
+                '                                           <p class="weather-value">11km/h</p>' +
+                '                                           <p class="weather-value">1012 hPa</p>' +
+                '                                       </div>' +
+                '                                       <div class="col-5">' +
+                '                                           <img src="../assets/img/java-logo.jpg">' +
+                '                                       </div>' +
+                '                                    </div>' +
+                '                                   </div>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                        <div class="col-lg-12 description">\n' +
-                '                            <p>'+ json.data[i].description +'</p>\n' +
+                '                            <p>' + json.data[i].description + '</p>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>';
         }
         return box;
     }
+
+    function getWeatherInfo() {
+        console.log("TRTRT " + lat + " : " + long);
+        $.ajax({
+            type: "GET",
+            cash: false,
+            url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&APPID=63c9c9c76d0dcc57f26cf102c2089f98",
+            dataType: 'json',
+            success: function (json) {
+
+                console.log(json.main.temp);
+            },
+            complete: function () {
+            },
+            error: function () {
+            }
+        });
+    }
+
 });

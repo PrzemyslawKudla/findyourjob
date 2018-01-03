@@ -1,98 +1,94 @@
 @import "../global-styles.scss";
 
-  h1 {
-    color: red;
-  }
-  #map {
-    height: 400px;
-    width: 100%;
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.main-content {
+
+  .adds-header {
+    text-align: left;
+    padding-bottom: 15px;
+    color: $secondaryColor;
+    margin-top: 10px;
   }
 
-  .main-content {
+  .single-add {
+    padding: 5px;
+    margin-bottom: 15px;
+    transition: all .3s ease-in-out;
 
-    .adds-header {
-      text-align: left;
-      padding-bottom: 15px;
-      color: $secondaryColor;
+    .left-col {
+      img {
+        height: 100px;
+        margin-top: 6px;
+      }
     }
 
-    .single-add {
-      padding: 5px;
-      margin-bottom: 15px;
-      transition: all .3s ease-in-out;
+    .right-col {
+      h5 {
+        transition: color .3s ease-in-out;
+        color: $primaryColor;
+        padding-top: 5px;
 
-      .left-col {
-        img {
-          height: 100px;
-          margin-top: 6px;
-        }
-      }
-
-      .right-col {
-        h5 {
-          transition: color .3s ease-in-out;
-          color: $primaryColor;
-          padding-top: 5px;
-
-          &:hover {
-            color: $secondaryColor;
-          }
-        }
-        p {
-          margin-bottom: 0;
+        &:hover {
           color: $secondaryColor;
         }
-
-        .date-info {
-          padding-top: 5px;
-          padding-left: 5px;
-          p {
-            color: $primaryTextColor;
-            font-size: 14px;
-          }
-          a {
-            transition: color .3s ease-in-out;
-            font-size: 14px;
-            text-decoration: none;
-            color: $secondaryColor;
-
-            &:hover {
-              color: $primaryColor;
-            }
-          }
-        }
+      }
+      p {
+        margin-bottom: 0;
+        color: $secondaryColor;
       }
 
-      .description {
-        color: $primaryTextColor;
-        padding-top: 10px;
+      .date-info {
+        padding-top: 5px;
+        padding-left: 5px;
         p {
-          padding: 0 10px;
+          color: $primaryTextColor;
           font-size: 14px;
-          margin-bottom: 5px;
+        }
+        a {
+          transition: color .3s ease-in-out;
+          font-size: 14px;
+          text-decoration: none;
+          color: $secondaryColor;
+
+          &:hover {
+            color: $primaryColor;
+          }
         }
       }
 
-      &:hover {
-        cursor: pointer;
-        -webkit-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
-        box-shadow: 10px 10px 51px 0px rgba(0, 0, 0, 0.5);
+      .weather-info {
+        img {
+          height: 75px;
+        }
 
-        webkit-transform: translateX(-10px);
-        -moz-transform: translateX(-10px);
-        -ms-transform: translateX(-10px);
-        -o-transform: translateX(-10px);
-        transform: translateX(-10px);
+       .weather-value {
+         font-weight: bold;
+         color: black;
+       }
       }
     }
-    .read-more {
-      text-decoration: none;
-      padding-left: 10px;
-      margin-bottom: 5px;
-      display: block;
-      &:hover {
-        cursor: pointer;
+
+    .description {
+      color: $primaryTextColor;
+      padding-top: 10px;
+      p {
+        padding: 0 10px;
+        font-size: 14px;
+        margin-bottom: 5px;
       }
     }
   }
+  .read-more {
+    text-decoration: none;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    display: block;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
