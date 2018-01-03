@@ -51,7 +51,6 @@ jQuery(function ($) {
                 $('.main-content').append(createSingleBox(json));
             },
             complete: function () {
-                console.log('completed');
             },
             error: function () {
                 console.log('Error');
@@ -91,14 +90,15 @@ jQuery(function ($) {
                 '                                           <p>Pressure:</p>' +
                 '                                       </div>' +
                 '                                       <div class="col-4">' +
-                '                                           <p class="weather-value">11</p>' +
-                '                                           <p class="weather-value">11km/h</p>' +
-                '                                           <p class="weather-value">1012 hPa</p>' +
+                '                                           <p class="weather-value w-temp"></p>' +
+                '                                           <p class="weather-value w-wind"></p>' +
+                '                                           <p class="weather-value w-press"></p>' +
                 '                                       </div>' +
                 '                                       <div class="col-5">' +
-                '                                           <img src="../assets/img/java-logo.jpg">' +
+                '                                           <img class="w-icon" src="">' +
                 '                                       </div>' +
                 '                                    </div>' +
+                '                                    <span class="w-description"></span>' +
                 '                                   </div>\n' +
                 '                            </div>\n' +
                 '                        </div>\n' +
@@ -112,13 +112,17 @@ jQuery(function ($) {
     }
 
     function getWeatherInfo() {
-        console.log("TRTRT " + lat + " : " + long);
         $.ajax({
             type: "GET",
             cash: false,
             url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&APPID=63c9c9c76d0dcc57f26cf102c2089f98",
             dataType: 'json',
             success: function (json) {
+                $('.w-temp').text(parseInt(json.main.temp - 273.15)).append(" °C");
+                $('.w-wind').text(parseInt(json.wind.speed * 3.6)).append(' km/h');
+                $('.w-press').text(parseInt(json.main.pressure)).append(' hPa');
+                $('.w-icon').attr('src', '../assets/icons/' + json.weather[0].icon + '.png');
+                $('.w-description').text(json.weather[0].description);
 
                 console.log(json.main.temp);
             },

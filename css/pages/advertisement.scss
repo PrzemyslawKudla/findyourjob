@@ -65,10 +65,18 @@
           height: 75px;
         }
 
+        .w-description {
+          display: inline-block;
+          &:first-letter {
+            text-transform: capitalize;
+          }
+        }
+
        .weather-value {
          font-weight: bold;
          color: black;
        }
+
       }
     }
 
