@@ -1,16 +1,21 @@
 jQuery(function ($) {
+    var paramsURL = window.location.search.substring(1);
+    var paramsArray = paramsURL.split('?');
+    var addID = paramsArray[0].substring(3);
+    var locID = paramsArray[1].substring(4);
+    console.log(addID + " : " + locID);
 
     $.ajax({
         type: "GET",
         cash: false,
-        url: "../public/api/localization/1",
+        url: "../public/api/localization/" + locID,
         dataType: 'json',
         success: function (json) {
             console.log(json);
             function initMap() {
                 var uluru = {lat: parseFloat(json.data[0].latitude), lng: parseFloat(json.data[0].longitude)};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
+                    zoom: 13,
                     center: uluru
                 });
                 var marker = new google.maps.Marker({
@@ -32,7 +37,7 @@ jQuery(function ($) {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "../public/api/advertisement/1",
+            url: "../public/api/advertisement/" + addID,
             dataType: 'json',
             success: function (json) {
                 console.log(json);
@@ -81,5 +86,4 @@ jQuery(function ($) {
         }
         return box;
     }
-
 });

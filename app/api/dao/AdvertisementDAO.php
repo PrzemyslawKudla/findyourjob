@@ -91,7 +91,7 @@ class AdvertisementDAO
 
     public function getSingleAdvertisementDataArray()
     {
-        $query = "SELECT a.title, a.description, a.salary, a.expiration_date, a.added_date, u.name as userName,
+        $query = "SELECT a.id_advertisment, a.localization_id, a.title, a.description, a.salary, a.expiration_date, a.added_date, u.name as userName,
                   c.name as company, j.name as category, l.address FROM advertisement a, user u, company c,
                   job_category j, localization l, advertisement_category ac 
                     WHERE u.id_user = a.user_id 

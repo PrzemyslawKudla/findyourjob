@@ -1,4 +1,5 @@
 jQuery(function ($) {
+
     getAllAdds();
 
     function getAllAdds() {
@@ -10,6 +11,11 @@ jQuery(function ($) {
             success: function (json) {
                 console.log(json);
                 $('.main-content').append(createSingleBox(json));
+                $('.read-more').on('click', function () {
+                    var id = $(this).attr("data-add-id");
+                    var loc = $(this).attr("data-loc-id");
+                    window.location.href = '/view/advertisement.php?id=' + id + '?loc=' + loc;
+                });
             },
             complete: function () {
                 console.log('completed');
@@ -48,7 +54,7 @@ jQuery(function ($) {
                 '                        </div>\n' +
                 '                        <div class="col-lg-12 description">\n' +
                 '                            <p>'+ createSubstring(json.data[i].description) +'</p>\n' +
-                '                            <a href="#" class="read-more">Read more</a>\n' +
+                '                            <a href="#" data-loc-id="'+ json.data[i].localization_id +'" data-add-id="'+ json.data[i].id_advertisment +'" class="read-more">Read more</a>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>';
@@ -59,5 +65,4 @@ jQuery(function ($) {
     function createSubstring(string) {
         return string.substring(0,400) + "..";
     }
-
 });
