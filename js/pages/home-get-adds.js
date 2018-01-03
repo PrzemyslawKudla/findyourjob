@@ -47,13 +47,17 @@ jQuery(function ($) {
                 '                            </div>\n' +
                 '                        </div>\n' +
                 '                        <div class="col-lg-12 description">\n' +
-                '                            <p>'+ json.data[i].description +'</p>\n' +
+                '                            <p>'+ createSubstring(json.data[i].description) +'</p>\n' +
                 '                            <a href="#" class="read-more">Read more</a>\n' +
                 '                        </div>\n' +
                 '                    </div>\n' +
                 '                </div>';
         }
         return box;
+    }
+
+    function createSubstring(string) {
+        return string.substring(0,400) + "..";
     }
 
 });

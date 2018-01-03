@@ -35,7 +35,7 @@ class AdvertisementDAO
 
     public function getAdvertisementByID($id)
     {
-        $query = $this->db->prepare("SELECT * FROM advertisement WHERE  id_advertisement=$id");
+        $query = $this->db->prepare("SELECT * FROM advertisement WHERE  id_advertisment=$id");
         $query->execute();
         $this->jsonUtils->processResult($query, 200, "Success, advertisement (id=$id) downloaded", 101,
             "Error while getting advertisement (id=$id)");
@@ -43,7 +43,7 @@ class AdvertisementDAO
 
     public function deleteAdvertisementById($id)
     {
-        $query = $this->db->prepare("DELETE FROM advertisement WHERE id_advertisement = :id_ad");
+        $query = $this->db->prepare("DELETE FROM advertisement WHERE id_advertisment = :id_ad");
         $query->bindParam(':id_ad', $id);
         $query->execute();
 

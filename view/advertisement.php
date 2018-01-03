@@ -29,14 +29,20 @@ else {
 </head>
 <body>
 <?php require_once("top-menu.php") ?>
-<div class="container main-container">
+<div class="container">
     <div class="row">
-        <div id="map"></div>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABbVxkDhVsqJvAmuZuVx2gH5isBBEXtrw&callback=initMap">
-        </script>
+        <div class="col-lg-12">
+            <div class="main-content">
+                <h5 class="adds-header">Details of advertisement</h5>
+            </div>
+            <div id="map"></div>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABbVxkDhVsqJvAmuZuVx2gH5isBBEXtrw&callback=initMap">
+            </script>
+        </div>
     </div>
 </div>
+
 
 <script src="../js/scripts/jquery-3.2.1.min.js"></script>
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>

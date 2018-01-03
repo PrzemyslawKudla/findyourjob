@@ -79,5 +79,20 @@
         }
       }
     }
+    #button-log-out {
+      background: none;
+      border: none;
+      color: #757575;
+      transition: color .3s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

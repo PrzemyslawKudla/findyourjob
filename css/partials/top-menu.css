@@ -52,5 +52,15 @@
     @media screen and (max-width: 576px) {
       .navbar .menu-items .search-form .search-field {
         margin-right: 10px; } }
+  .navbar .menu-items #button-log-out {
+    background: none;
+    border: none;
+    color: #757575;
+    transition: color .3s ease-in-out; }
+    .navbar .menu-items #button-log-out:hover {
+      cursor: pointer;
+      color: #fff; }
+    .navbar .menu-items #button-log-out:focus {
+      outline: none; }
 
 /*# sourceMappingURL=top-menu.css.map */
