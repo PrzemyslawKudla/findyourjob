@@ -35,7 +35,15 @@ class AdvertisementDAO
 
     public function getAdvertisementByID($id)
     {
-        $query = $this->db->prepare("SELECT * FROM advertisement WHERE  id_advertisment=$id");
+        $query = $this->db->prepare("SELECT a.id_advertisment, a.localization_id, a.title, a.description, a.salary, a.expiration_date, a.added_date, u.name as userName,
+                  c.name as company, j.name as category, l.address FROM advertisement a, user u, company c,
+                  job_category j, localization l, advertisement_category ac 
+                    WHERE u.id_user = a.user_id 
+                    AND a.localization_id = l.id_localization
+                    AND a.id_advertisment = ac.advertisement_id
+                    AND j.id_category = ac.category_id
+                    AND c.id_company = l.company_id
+                    AND a.id_advertisment = $id");
         $query->execute();
         $this->jsonUtils->processResult($query, 200, "Success, advertisement (id=$id) downloaded", 101,
             "Error while getting advertisement (id=$id)");
@@ -97,7 +105,8 @@ class AdvertisementDAO
                     WHERE u.id_user = a.user_id 
                     AND a.localization_id = l.id_localization
                     AND a.id_advertisment = ac.advertisement_id
-                    AND j.id_category = ac.category_id";
+                    AND j.id_category = ac.category_id
+                    AND c.id_company = l.company_id";
 
         $result = $this->db->query($query);
         $this->jsonUtils->processResult($result, 220, "Success, array of single advertisements downloaded", 109,
