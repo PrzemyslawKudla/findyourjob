@@ -73,7 +73,7 @@ $(document).ready(function () {
                     'name': name,
                     'surname': surname
                 },
-                url: "http://findyourjob.local/public/api/register",
+                url: "http://przem94.ayz.pl/findYourJob/public/api/register",
                 dataType: 'json',
                 success: function (json) {
                     if (json.code >= 200 && json.code < 300) {

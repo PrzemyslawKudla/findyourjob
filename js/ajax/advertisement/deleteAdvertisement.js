@@ -4,7 +4,7 @@ $(document).ready(function () {
         $.ajax({
             type: "DELETE",
             cash: false,
-            url: "http://findyourjob.local/public/api/advertisement/2",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/advertisement/2",
             dataType : 'text',
             success: function(json) {
                 console.log(json);

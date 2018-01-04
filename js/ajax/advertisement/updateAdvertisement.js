@@ -14,7 +14,7 @@ $(document).ready(function () {
                 'category_id' : 1,
                 'localization_id' : 2
             },
-            url: "http://findyourjob.local/public/api/advertisement",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/advertisement",
             dataType : 'json',
             success: function(json) {
                 console.log(json);

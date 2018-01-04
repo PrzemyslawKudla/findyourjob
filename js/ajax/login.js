@@ -40,7 +40,7 @@ $(document).ready(function () {
                     'login': login,
                     'password': password
                 },
-                url: "http://findyourjob.local/public/api/login",
+                url: "http://przem94.ayz.pl/findYourJob/public/api/login",
                 dataType: 'json',
                 success: function (json) {
                     console.log(json);

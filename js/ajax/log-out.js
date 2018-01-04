@@ -9,7 +9,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             cash: false,
-            url: "http://findyourjob.local/public/api/logout",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/logout",
             dataType: 'json',
             success: function (json) {
                 // console.log(json);
