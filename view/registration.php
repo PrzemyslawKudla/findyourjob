@@ -5,8 +5,8 @@ if(!isset($_SESSION))
 }
 if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
     if( $_SESSION['is-logged-in'] == true) {
-     //   header('Location: '.'/view/home.php');
-      //  exit;
+        //   header('Location: '.'/view/home.php');
+        //  exit;
     }
 }
 
@@ -143,5 +143,7 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/ajax/register.js"></script>
+<script src="../js/scripts/global-scripts.js"></script>
+
 </body>
 </html>

@@ -4,11 +4,11 @@ if(!isset($_SESSION))
     session_start();
 }
 if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) {
-print_r($_SESSION);
 }
 else {
-    header('Location: ' . 'findYourJob/view/login.php');
+    header('Location: ' . '/view/login.php');
     exit;
+
 }
 
 
@@ -63,7 +63,7 @@ else {
         </div>
         <div class="col-lg-9">
             <div class="main-content">
-                <h5 class="adds-header">Job advertisement for you</h5>
+                <h5 class="adds-header">Job advertisements for you</h5>
             </div>
         </div>
     </div>
@@ -75,5 +75,6 @@ else {
 <script src="../js/ajax/home-page.js"></script>
 <script src="../js/pages/home-get-adds.js"></script>
 <script src="../js/ajax/log-out.js"></script>
+<script src="../js/scripts/global-scripts.js"></script>
 </body>
 </html>

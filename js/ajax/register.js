@@ -77,7 +77,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (json) {
                     if (json.code >= 200 && json.code < 300) {
-                        window.location.href = 'findYourJob/view/login.php';
+                        window.location.href = '/view/login.php';
                     }
                     else {
                         alert(json.message);
