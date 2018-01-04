@@ -93,6 +93,7 @@ class AdvertisementDAO
         $query->bindParam(':localization_id', $localization_id);
         $query->execute();
 
+
         $this->jsonUtils->processResultInsert($query, 200, "Success, advertisement updated", 101,
             'Error while updating advertisement');
     }
