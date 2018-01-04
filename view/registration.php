@@ -5,8 +5,8 @@ if(!isset($_SESSION))
 }
 if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
     if( $_SESSION['is-logged-in'] == true) {
-        //   header('Location: '.'findYourJob/view/home.php');
-        //  exit;
+     //   header('Location: '.'/view/home.php');
+      //  exit;
     }
 }
 
@@ -132,7 +132,7 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
                 <div class="col-md-12">
                     <button type="submit" id="register-button" class="btn button-global">Register</button>
                     <span class="have-account">You have account?</span>
-                    <a class="login-link" href="findYourJob/view/login.php"> Log in</a>
+                    <a class="login-link" href="/view/login.php"> Log in</a>
                 </div>
             </div>
         </form>
@@ -143,7 +143,5 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/ajax/register.js"></script>
-<script src="../js/scripts/global-scripts.js"></script>
-
 </body>
 </html>

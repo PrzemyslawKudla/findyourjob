@@ -80,7 +80,6 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
                 </div>
             </div>
             <div class="row">
-
                 <div class="col-md-12">
                     <button type="submit" id="login-button" class="btn button-global"> Login</button>
                     <a class="forgot-password" href="">Forgot Your Password?</a>
@@ -94,7 +93,5 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script src="../js/libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/ajax/login.js"></script>
-<script src="../js/scripts/global-scripts.js"></script>
-
 </body>
 </html>

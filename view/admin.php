@@ -4,12 +4,12 @@ if (!isset($_SESSION)) {
 }
 if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) {
     if ($_SESSION['is-logged-in'] != true || $_SESSION['user_data']['rights'] != 'admin') {
-        header('Location: ' . 'findYourJob/view/home.php');
+        header('Location: ' . '/view/home.php');
         exit;
     }
 }
 else {
-    header('Location: ' . 'findYourJob/view/login.php');
+    header('Location: ' . '/view/login.php');
     exit;
 }
 ?>
