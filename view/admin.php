@@ -1,15 +1,17 @@
 <?php
-if(!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged-in'] != null) {
-    if ($_SESSION['is-logged-in'] != true) {
+    if ($_SESSION['is-logged-in'] != true || $_SESSION['user_data']['rights'] != 'admin') {
         header('Location: ' . '/view/home.php');
         exit;
     }
 }
-
+else {
+    header('Location: ' . '/view/login.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,14 +64,15 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="see-all-users">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one"
+                                           id="see-all-users">
                                             See all users
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="one" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                      <table class="table" id="all-users"></table>
+                                        <table class="table" id="all-users"></table>
                                     </div>
                                 </div>
 
@@ -86,7 +89,7 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
 
                                 <div id="two" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <?php include_once('view-parts/admin-add-user.php');?>
+                                        <?php include_once('view-parts/admin-add-user.php'); ?>
                                     </div>
 
                                 </div>
@@ -96,7 +99,8 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#three" id="delete-user">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#three"
+                                           id="delete-user">
                                             Delete user
                                         </a>
                                     </h4>
@@ -207,7 +211,8 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="see-all-users">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one"
+                                           id="see-all-users">
                                             See all users
                                         </a>
                                     </h4>
@@ -275,7 +280,8 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="see-all-users">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one"
+                                           id="see-all-users">
                                             See all users
                                         </a>
                                     </h4>
@@ -343,7 +349,8 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
                             <div class="panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="see-all-users">
+                                        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one"
+                                           id="see-all-users">
                                             See all users
                                         </a>
                                     </h4>
@@ -415,5 +422,7 @@ if (isset($_SESSION) && isset($_SESSION['is-logged-in']) && $_SESSION['is-logged
 <script src="../js/pages/admin-add-user.js"></script>
 <script src="../js/pages/admin-delete-user.js"></script>
 <script src="../js/ajax/log-out.js"></script>
+<script src="../js/scripts/global-scripts.js"></script>
+
 </body>
 </html>

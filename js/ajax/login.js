@@ -40,30 +40,27 @@ $(document).ready(function () {
                     'login': login,
                     'password': password
                 },
-                url: "http://findyourjob.dev/public/api/login",
+                url: "http://findyourjob.local/public/api/login",
                 dataType: 'json',
                 success: function (json) {
                     console.log(json);
-                    console.log('Przed ');
                     if (json.code >= 200 && json.code < 300 && json.data.rights === "user") {
-                        console.log('1');
                         window.location.href = '/view/home.php';
                     }
                     else if(json.code >= 200 && json.code < 300 && json.data.rights === "admin"){
-                        console.log('2');
                         window.location.href = '/view/admin.php';
                     }
                     else if(json.code = 111) {
-                        console.log('3');
                         window.location.href = '/view/home.php';
                     }
-                    console.log('Po');
+                    else if(json.code < 200) {
+                        alert(json.message);
+                    }
                 },
                 complete: function () {
-                    console.log('Complete mdfvwefgb');
                 },
                 error: function () {
-                    console.log('Error dsgu sgb gbjhadhfbsrej rgb jsrgb Ah ');
+                    console.log("Error");
                 }
             });
         }
