@@ -2,7 +2,6 @@
 if(!isset($_SESSION))
 {
     session_start();
-    print_r($_SESSION);
 }
 if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
     if( $_SESSION['is-logged-in'] == true) {

@@ -12,7 +12,7 @@
 
 <body>
 <?php
-header('Location: ' . '/view/login.php');
+header('Location: ' . '/findYourJob/view/login.php');
 exit;
 ?>
 </body>
