@@ -13,7 +13,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (json) {
                    // console.log(json);
-                    window.location.href = '/view/login.php';
+                    window.location.href = 'findYourJob/view/login.php';
                 },
                 complete: function () {
                 },

@@ -6,14 +6,14 @@
                 <img src="../assets/img/hamburger-icon.png" alt="">
             </span>
         </button>
-        <a href="/view/home.php"> <img class="text-logo" src="../assets/img/logo-text.png" alt="logo"></a>
+        <a href="findYourJob/view/home.php"> <img class="text-logo" src="../assets/img/logo-text.png" alt="logo"></a>
         <div class="collapse navbar-collapse menu-items" id="navbarText">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="single-link" href="/view/home.php">HOME<span></span></a>
+                    <a class="single-link" href="findYourJob/view/home.php">HOME<span></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="single-link admin-link" href="/view/admin.php">ADMIN</a>
+                    <a class="single-link admin-link" href="findYourJob/view/admin.php">ADMIN</a>
                 </li>
                 <li class="nav-item">
                     <a class="single-link" href="#">EMPLOYERS</a>

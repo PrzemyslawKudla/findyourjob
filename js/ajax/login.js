@@ -45,13 +45,13 @@ $(document).ready(function () {
                 success: function (json) {
                     console.log(json);
                     if (json.code >= 200 && json.code < 300 && json.data.rights === "user") {
-                        window.location.href = '/view/home.php';
+                        window.location.href = 'findYourJob/view/home.php';
                     }
                     else if(json.code >= 200 && json.code < 300 && json.data.rights === "admin"){
-                        window.location.href = '/view/admin.php';
+                        window.location.href = 'findYourJob/view/admin.php';
                     }
                     else if(json.code = 111) {
-                        window.location.href = '/view/home.php';
+                        window.location.href = 'findYourJob/view/home.php';
                     }
                     else if(json.code < 200) {
                         alert(json.message);
