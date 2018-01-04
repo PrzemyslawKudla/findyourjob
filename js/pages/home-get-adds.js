@@ -14,7 +14,7 @@ jQuery(function ($) {
                 $('.read-more').on('click', function () {
                     var id = $(this).attr("data-add-id");
                     var loc = $(this).attr("data-loc-id");
-                    window.location.href = '/view/advertisement.php?id=' + id + '?loc=' + loc;
+                    window.location.href = '/findYourJob/view/advertisement.php?id=' + id + '?loc=' + loc;
                 });
             },
             complete: function () {

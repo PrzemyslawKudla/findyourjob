@@ -5,7 +5,7 @@ if(!isset($_SESSION))
 }
 if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
     if( $_SESSION['is-logged-in'] == true) {
-        //   header('Location: '.'/view/home.php');
+        //   header('Location: '.'/findYourJob/view/home.php');
         //  exit;
     }
 }
