@@ -8,7 +8,7 @@
 
 
 $app->post('/api/register', function (\Slim\Http\Request $request) {
-    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/functions/UserAccess.php');
+    require('http://przem94.ayz.pl/findYourJob' . '/app/api/functions/UserAccess.php');
     $login = $request->getParsedBody()['login'];
     $password1 = $request->getParsedBody()['password1'];
     $password2 = $request->getParsedBody()['password2'];
