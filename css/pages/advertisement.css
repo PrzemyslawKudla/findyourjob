@@ -1,0 +1,81 @@
+.container-fluid {
+  background: darkgray; }
+  .container-fluid .ads {
+    background-color: #33cc33;
+    border-color: #33cc33; }
+
+.button-global {
+  padding: 10px 40px !important;
+  text-transform: uppercase;
+  background: #757575;
+  color: #ffffff;
+  border-radius: 2px; }
+  .button-global:hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #757575;
+    border: 1px solid #757575; }
+
+#map {
+  height: 400px;
+  width: 100%; }
+
+.main-content .adds-header {
+  text-align: left;
+  padding-bottom: 15px;
+  color: #757575;
+  margin-top: 10px; }
+.main-content .single-add {
+  padding: 5px;
+  margin-bottom: 15px;
+  transition: all .3s ease-in-out; }
+  .main-content .single-add .left-col img {
+    height: 100px;
+    margin-top: 6px; }
+  .main-content .single-add .right-col h5 {
+    transition: color .3s ease-in-out;
+    color: #00BCD4;
+    padding-top: 5px; }
+    .main-content .single-add .right-col h5:hover {
+      color: #757575; }
+  .main-content .single-add .right-col p {
+    margin-bottom: 0;
+    color: #757575; }
+  .main-content .single-add .right-col .date-info {
+    padding-top: 5px;
+    padding-left: 5px; }
+    .main-content .single-add .right-col .date-info p {
+      color: #212121;
+      font-size: 14px; }
+    .main-content .single-add .right-col .date-info a {
+      transition: color .3s ease-in-out;
+      font-size: 14px;
+      text-decoration: none;
+      color: #757575; }
+      .main-content .single-add .right-col .date-info a:hover {
+        color: #00BCD4; }
+  .main-content .single-add .right-col .weather-info img {
+    height: 75px; }
+  .main-content .single-add .right-col .weather-info .w-description {
+    display: inline-block; }
+    .main-content .single-add .right-col .weather-info .w-description:first-letter {
+      text-transform: capitalize; }
+  .main-content .single-add .right-col .weather-info .weather-value {
+    font-weight: bold;
+    color: black; }
+  .main-content .single-add .description {
+    color: #212121;
+    padding-top: 10px; }
+    .main-content .single-add .description p {
+      padding: 0 10px;
+      font-size: 14px;
+      margin-bottom: 5px; }
+.main-content .read-more {
+  text-decoration: none;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  display: block; }
+  .main-content .read-more:hover {
+    cursor: pointer; }
+
+/*# sourceMappingURL=advertisement.css.map */
