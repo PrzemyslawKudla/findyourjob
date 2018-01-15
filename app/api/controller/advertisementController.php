@@ -7,40 +7,40 @@
  */
 
 $app->get('/api/advertisement', function () {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $advertisement = new  Advertisement();
     $advertisement->getAllAdvertisements();
 });
 
 $app->get('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $id = $request->getAttribute('id');
     $advertisement = new  Advertisement();
     $advertisement->getAdvertisementById($id);
 });
 
 $app->get('/api/advertisements', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $advertisement = new Advertisement();
     $advertisement->getSingleAdvertisementDataArray();
 });
 
 $app->get('/api/localization/{id}', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $id = $request->getAttribute('id');
     $advertisement = new Advertisement();
     $advertisement->getCompanyLocalization($id);
 });
 
 $app->delete('/api/advertisement/{id}', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $id = $request->getAttribute('id');
     $advertisement = new  Advertisement();
     $advertisement->deleteAdvertisementById($id);
 });
 
 $app->post('/api/advertisement', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $title = $request->getParsedBody()['title'];
     $description = $request->getParsedBody()['description'];
     $salary = $request->getParsedBody()['salary'];
@@ -53,7 +53,7 @@ $app->post('/api/advertisement', function (\Slim\Http\Request $request) {
 });
 
 $app->put('/api/advertisement', function (\Slim\Http\Request $request) {
-    require('http://przem94.ayz.pl/findYourJob' . '/app/api/domain/Advertisement.php');
+    require($_SERVER["DOCUMENT_ROOT"] . '/app/api/domain/Advertisement.php');
     $advertisement_id = $request->getParsedBody()['advertisement_id'];
     $title = $request->getParsedBody()['title'];
     $description = $request->getParsedBody()['description'];

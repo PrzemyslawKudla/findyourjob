@@ -6,7 +6,7 @@
  * Time: 22:08
  */
 
-require('http://przem94.ayz.pl/findYourJob' . '/app/api/dao/UserDAO.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/UserDAO.php');
 
 class User
 {

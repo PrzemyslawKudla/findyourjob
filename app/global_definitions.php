@@ -6,4 +6,4 @@
  * Time: 20:51
  */
 
-define("VIEW_URL",     'http://przem94.ayz.pl/findYourJob' . '/view');
+define("VIEW_URL",     $_SERVER["DOCUMENT_ROOT"] . '/view');

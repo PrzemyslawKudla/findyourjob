@@ -6,7 +6,7 @@
  * Time: 22:32
  */
 
-require('http://przem94.ayz.pl/findYourJob' . '/app/api/dao/AdvertisementDAO.php');
+require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/AdvertisementDAO.php');
 
 class Advertisement
 {
