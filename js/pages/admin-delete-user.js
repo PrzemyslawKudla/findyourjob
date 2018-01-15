@@ -8,7 +8,7 @@ jQuery(function ($) {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "../public/api/user",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/user",
             dataType: 'json',
             success: function (json) {
                 console.log(json);
@@ -60,7 +60,7 @@ jQuery(function ($) {
             $.ajax({
                 type: "DELETE",
                 cash: false,
-                url: '../public/api/user/' + id,
+                url: 'http://przem94.ayz.pl/findYourJob/public/api/user/' + id,
                 dataType: 'text',
                 success: function (json) {
                     console.log(json);

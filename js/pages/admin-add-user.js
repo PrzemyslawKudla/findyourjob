@@ -29,7 +29,7 @@ jQuery(function ($) {
                 'rights': rights,
                 'status': 1
             },
-            url: "../public/api/user",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/user",
             dataType: 'json',
             success: function (json) {
                 console.log(json);

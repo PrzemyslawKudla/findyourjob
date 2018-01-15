@@ -10,7 +10,7 @@ jQuery(function ($) {
     $.ajax({
         type: "GET",
         cash: false,
-        url: "../public/api/localization/" + locID,
+        url: "http://przem94.ayz.pl/findYourJob/public/api/localization/" + locID,
         dataType: 'json',
         success: function (json) {
             console.log(json);
@@ -44,7 +44,7 @@ jQuery(function ($) {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "../public/api/advertisement/" + addID,
+            url: "http://przem94.ayz.pl/findYourJob/public/api/advertisement/" + addID,
             dataType: 'json',
             success: function (json) {
                 console.log(json);

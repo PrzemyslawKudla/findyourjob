@@ -21,9 +21,9 @@ class UserAccessDAO
     function __construct()
     {
         try {
-            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/JSONUtils.php');
-            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/connection_data.php');
-            require($_SERVER["DOCUMENT_ROOT"] . '/app/api/PassCrypt.php');
+            require('../app/api/JSONUtils.php');
+            require('../app/api/connection_data.php');
+            require('../app/api/PassCrypt.php');
             $this->db = new PDO('mysql:host=' . $server_address . ';dbname=' . $db_name . ';charset=utf8', $user_login
                 , $user_password);
             $this->jsonUtils = new JSONUtils();

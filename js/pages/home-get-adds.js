@@ -6,7 +6,7 @@ jQuery(function ($) {
         $.ajax({
             type: "GET",
             cash: false,
-            url: "../public/api/advertisements",
+            url: "http://przem94.ayz.pl/findYourJob/public/api/advertisements",
             dataType: 'json',
             success: function (json) {
                 console.log(json);

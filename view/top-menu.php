@@ -6,7 +6,7 @@
                 <img src="../assets/img/hamburger-icon.png" alt="">
             </span>
         </button>
-        <a href="/view/home.php"> <img class="text-logo" src="../assets/img/logo-text.png" alt="logo"></a>
+        <a href="/findYourJob/view/home.php"> <img class="text-logo" src="../assets/img/logo-text.png" alt="logo"></a>
         <div class="collapse navbar-collapse menu-items" id="navbarText">
             <ul class="navbar-nav">
                 <li class="nav-item">

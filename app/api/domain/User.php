@@ -6,7 +6,7 @@
  * Time: 22:08
  */
 
-require($_SERVER["DOCUMENT_ROOT"] . '/app/api/dao/UserDAO.php');
+require('../app/api/dao/UserDAO.php');
 
 class User
 {
