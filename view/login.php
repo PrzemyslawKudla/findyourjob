@@ -83,7 +83,7 @@ if(isset( $_SESSION['is-logged-in']) &&  $_SESSION['is-logged-in'] != null){
 
                 <div class="col-md-12">
                     <button type="submit" id="login-button" class="btn button-global"> Login</button>
-                    <a class="forgot-password" href="">Forgot Your Password?</a>
+                    <a class="forgot-password" href="/findYourJob/view/registration.php">Don't have account? Register here</a>
                 </div>
             </div>
         </form>
